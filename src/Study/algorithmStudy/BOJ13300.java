@@ -1,4 +1,4 @@
-package BOJ.스터디;
+package Study.algorithmStudy;
 
 import java.util.Scanner;
 

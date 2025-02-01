@@ -1,36 +1,34 @@
-package BOJ;
+package Study.algorithmStudy;
 
 import java.util.Scanner;
 import java.util.Stack;
 
-public class BOJ2493_try2_edited_X {
+public class BOJ2493_try2_X {
     /**
      * 탑
      * 메모리 초과
-     * Try2에서 towers 배열 따로 안 만들어주고 바로바로 읽어서 처리
      */
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Stack<Integer> stack = new Stack<>();
         int n = sc.nextInt();
-//        int[] towers = new int[n];
-//        for (int i = 0; i < n; i++) {
-//            towers[i] = sc.nextInt();
-//        }
+        int[] towers = new int[n];
+        for (int i = 0; i < n; i++) {
+            towers[i] = sc.nextInt();
+        }
 
         int[] receivers = new int[n];
 
-        stack.push(sc.nextInt());
+        stack.push(towers[0]);
         receivers[0] = 0;
         for (int i = 1; i < n; i++) {
-            int x = sc.nextInt();
             // 만약 새로 넣으려는 친구가 방금 들어간 친구보다 작거나 같다면
-            if (x <= stack.peek()) {
+            if (towers[i] <= stack.peek()) {
                 // 방금 들어간 친구가 받아줄 것임
                 receivers[i] = i;
                 // 받아줄 친구 정하고나서 스택 넣어주기
-                stack.push(x);
+                stack.push(towers[i]);
             } else {
                 // 만약 새로 넣으려는 친구가 방금 들어간 친구보다 크다면
                 for (int j = 1; j < i; j++) {
@@ -40,7 +38,7 @@ public class BOJ2493_try2_edited_X {
                     // 나보다 높은 탑 위치 발견하면 그대로 break
                     if (receivers[i - j] == 0) {
                         receivers[i] = 0;
-                    } else if (stack.elementAt(receivers[i - j] - 1) > x) {
+                    } else if (towers[receivers[i - j] - 1] > towers[i]) {
                         // receivers에 저장된 건 탑 번호라서 towers의 index보다 1씩 큼 -> towers에서 찾을 때 1씩 빼줘야 함
                         receivers[i] = receivers[i - j];    // 걔가 날 받아줄 것임
                         break;
@@ -48,7 +46,7 @@ public class BOJ2493_try2_edited_X {
                         receivers[i] = 0;   // 발견 못하면 0으로 끝나게 됨
                     }
                 }
-                stack.push(x);  // 나도 stack 들어가
+                stack.push(towers[i]);  // 나도 stack 들어가
             }
         }
 

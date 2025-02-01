@@ -1,4 +1,4 @@
-package BOJ;
+package Study.algorithm_lunchStudy;
 
 import java.io.*;
 import java.util.HashMap;
