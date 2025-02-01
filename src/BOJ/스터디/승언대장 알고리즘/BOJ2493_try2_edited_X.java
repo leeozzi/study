@@ -3,10 +3,11 @@ package BOJ;
 import java.util.Scanner;
 import java.util.Stack;
 
-public class BOJ2493_try2_fail_edited {
+public class BOJ2493_try2_edited_X {
     /**
      * 탑
      * 메모리 초과
+     * Try2에서 towers 배열 따로 안 만들어주고 바로바로 읽어서 처리
      */
 
     public static void main(String[] args) {

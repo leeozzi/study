@@ -3,7 +3,7 @@ package BOJ;
 import java.util.Scanner;
 import java.util.Stack;
 
-public class BOJ2493_try2_fail {
+public class BOJ2493_try2_X {
     /**
      * 탑
      * 메모리 초과

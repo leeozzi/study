@@ -2,7 +2,7 @@ package BOJ;
 
 import java.util.Scanner;
 
-public class BOJ2493_try1_fail {
+public class BOJ2493_try1_X {
     /**
      * 탑
      * 메모리 초과
