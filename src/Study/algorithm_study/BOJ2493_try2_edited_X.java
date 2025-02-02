@@ -1,4 +1,4 @@
-package Study.algorithmStudy;
+package Study.algorithm_study;
 
 import java.util.Scanner;
 import java.util.Stack;
