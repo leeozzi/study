@@ -24,9 +24,6 @@ public class BOJ5427 {
         int t = Integer.parseInt(br.readLine());
 
         while (t-- > 0) {
-            System.out.println("=======================================");
-
-
             // queue랑 stack 새로 만들어주기
             queue = new LinkedList<>();
             stack = new Stack<>();
