@@ -29,7 +29,7 @@
 - [BOJ 15651.N과 M(1)](https://www.acmicpc.net/problem/15649)
 - [BOJ 15651.N과 M(3)](https://www.acmicpc.net/problem/15651)
 - 이중연결리스트 만들기  
-  > [!summary] 다음 코드를 활용해서 이중연결리스트 만들어오기
+> [!summary] 다음 코드를 활용해서 이중연결리스트 만들어오기
 	> ```java
 	> public class Node {
 	> 	int value;
