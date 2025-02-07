@@ -31,31 +31,31 @@
 - 이중연결리스트 만들기  
 다음 코드를 활용해서 이중연결리스트 만들어오기
 
-```java
-public class Node {
-	int value;
-	Node prev;
-	Node next;
-}
-```
+	```java
+	public class Node {
+		int value;
+		Node prev;
+		Node next;
+	}
+	```
 
-```java
-public interface ILinkedList {
-	public void add(int index, Node node);
-	public void remove(int value);
-	public void printAll();
-}
-```
+	```java
+	public interface ILinkedList {
+		public void add(int index, Node node);
+		public void remove(int value);
+		public void printAll();
+	}
+	```
 
-인터페이스 implements 하고 아래 함수를 포함한 클래스 구현
+	인터페이스 implements 하고 아래 함수를 포함한 클래스 구현
 
-1. 생성자로 n을 입력받고 1~n까지를 값으로 갖는 이중연결리스트 구현
-2. index번째 위치에 node를 추가하는 함수 // index가 범위를 초과하지 않는다고 전제
-    1. add(int index, Node node)
-3. value값을 가진 노드 삭제 // 중복된 값이 있으면 첫 번째 만나는 노드만 삭제
-    1. remove(int value)
-4. 순서대로 모든 노드를 순서대로 출력하는 함수
-    1. printAll()
+	1. 생성자로 n을 입력받고 1~n까지를 값으로 갖는 이중연결리스트 구현
+	2. index번째 위치에 node를 추가하는 함수 // index가 범위를 초과하지 않는다고 전제
+    		a. add(int index, Node node)
+	3. value값을 가진 노드 삭제 // 중복된 값이 있으면 첫 번째 만나는 노드만 삭제
+    		a. remove(int value)
+	4. 순서대로 모든 노드를 순서대로 출력하는 함수
+    		a. printAll()
 
 </br>
 
