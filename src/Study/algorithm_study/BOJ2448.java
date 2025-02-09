@@ -2,12 +2,15 @@ package Study.algorithm_study;
 
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.Stack;
 
-public class BOJ2448_ON {
+public class BOJ2448 {
+    /**
+     * 별 찍기 - 11
+     * https://www.acmicpc.net/problem/2448
+     */
 
-    static StringBuilder sb1 = new StringBuilder();
-    static StringBuilder sb2 = new StringBuilder();
-    static StringBuilder sb3 = new StringBuilder();
+    static Stack<String> stack = new Stack<>();
 
 
     public static void main(String[] args) throws IOException {
@@ -15,29 +18,16 @@ public class BOJ2448_ON {
         int N = sc.nextInt();
 
 
-        stars(N);
+        stars("  *   ", " * *  ", "***** ", 24);
 
     }
 
-    public static void stars(int n) throws IOException {
-        String pattern = "";
-
-        String line1 = "";
-        String line2 = "";
-        String line3 = "";
-
-        if (n == 3) {
-            pattern = "*";
-            line1 = "  *   ";
-            line2 = " *  *  ";
-            line3 = "***** ";
-        }
-
-        if (n == 6) {
-            sb1.append(" ".repeat(3 * (n / 3 - 1)) + line1 + " ".repeat(3 * (n / 3 - 1)));
-            sb2.append(" ".repeat(3 * (n / 3 - 1)) + line2 + " ".repeat(3 * (n / 3 - 1)));
-            sb3.append(" ".repeat(3 * (n / 3 - 1)) + line3 + " ".repeat(3 * (n / 3 - 1)));
-        }
+    public static void stars(String line1, String line2, String line3, int n) throws IOException {
+        line1 = "   " + line1.repeat(n*2/line1.length()) + "   ";
+        line2 = "   " + line2.repeat(n*2/line2.length()) + "   ";
+        line3 = "   " + line3.repeat(n*2/line3.length()) + "   ";
+        
+        stars(line1, line2, line3, n/2);
 
 
 

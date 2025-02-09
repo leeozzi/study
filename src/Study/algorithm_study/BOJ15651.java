@@ -1,18 +1,17 @@
 package Study.algorithm_study;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Scanner;
 
-public class BOJ15649 {
+public class BOJ15651 {
     /**
-     * N과 M (1)
-     * <a href="https://www.acmicpc.net/problem/15649">...</a>
+     * N과 M (3)
+     * <a href="https://www.acmicpc.net/problem/15651">...</a>
      */
 
     static int[] arr;
-    static int[] visited;
-    static int[] combi;
-
     static StringBuilder sb;
+    static int[] com;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -20,9 +19,9 @@ public class BOJ15649 {
 
         int n = sc.nextInt();
         int m = sc.nextInt();
+
         arr = new int[n];
-        visited = new int[n];
-        combi = new int[m];
+        com = new int[m];
 
         for (int i = 0; i < n; i++) {
             arr[i] = i + 1;
@@ -36,8 +35,8 @@ public class BOJ15649 {
     public static void dfs(int n, int m, int depth) {
 
         if (depth == m) {
-            for (int e : combi) {
-                sb.append(e + " ");
+            for (int i = 0; i < m; i++) {
+                sb.append(com[i]).append(" ");
             }
             sb.append("\n");
 
@@ -45,16 +44,10 @@ public class BOJ15649 {
         }
 
         for (int i = 0; i < n; i++) {
-            if (visited[i] != 1) {
-                combi[depth] = arr[i];
-                visited[i] = 1;
-                dfs(n, m, depth + 1);
-                visited[i] = 0;
-            }
-
+            com[depth] = arr[i];
+            dfs(n, m, depth + 1);
         }
 
     }
-
 
 }
