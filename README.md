@@ -13,7 +13,7 @@
 - [BOJ 1012. 유기농배추](https://www.acmicpc.net/problem/1012)
 - [BOJ 2493. 탑](https://www.acmicpc.net/problem/2493)
 
-<br/>
+<br>
 
 ### FEBRUARY
 **0204 화요일**
@@ -26,7 +26,8 @@
 
 **0211 화요일**
 - [BOJ 2448.별 찍기](https://www.acmicpc.net/problem/2448)
-- [BOJ 15651.N과 M(1)](https://www.acmicpc.net/problem/15649)
+- [BOJ 15651.N과 M(1)](https://www.acmicpc.net/problem/15649)  
+	재귀로 풀기
 - [BOJ 15651.N과 M(3)](https://www.acmicpc.net/problem/15651)
 - 이중연결리스트 만들기  
 	다음 코드를 활용해서 이중연결리스트 만들어오기  
@@ -55,10 +56,8 @@
 	4. 순서대로 모든 노드를 순서대로 출력하는 함수  
     		- printAll()
 
-</br>
-
-
-</br>
+<br>
+<br>
 
 > ## ⭐ 점심 스터디
 

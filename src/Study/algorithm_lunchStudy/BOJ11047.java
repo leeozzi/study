@@ -1,4 +1,4 @@
-package lunch_study;
+package Study.algorithm_lunchStudy;
 import java.util.*;
 import java.io.*;
 public class BOJ11047 {
