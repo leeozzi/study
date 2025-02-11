@@ -1,44 +1,16 @@
 package Study.algorithm_study.doublyLinkedList;
 
 public class Node {
-    private int value;
-    private Node prev;
-    private Node next;
-    private int idx;
+    int value;
+    Node prev;
+    Node next;
 
     public Node(int value) {
         this.value = value;
     }
 
-    public int getValue() {
-        return value;
-    }
-
-    public void setValue(int value) {
-        this.value = value;
-    }
-
-    public Node getPrev() {
-        return prev;
-    }
-
-    public void setPrev(Node prev) {
-        this.prev = prev;
-    }
-
-    public Node getNext() {
-        return next;
-    }
-
-    public void setNext(Node next) {
-        this.next = next;
-    }
-
-    public int getIdx() {
-        return idx;
-    }
-
-    public void setIdx(int idx) {
-        this.idx = idx;
+    @Override
+    public String toString() {
+        return value + "";
     }
 }

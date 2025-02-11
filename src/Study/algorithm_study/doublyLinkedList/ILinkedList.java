@@ -1,7 +1,7 @@
 package Study.algorithm_study.doublyLinkedList;
 
 public interface ILinkedList {
-    public void add(int index, Node node);
-    public void remove(int value);
-    public void printAll();
+    void add(int index, Node node);
+    void remove(int value);
+    void printAll();
 }
