@@ -1,4 +1,4 @@
-package Study.algorithm_lunchStudy;
+package algorithm_lunchStudy;
 
 import java.io.*;
 import java.util.Arrays;
