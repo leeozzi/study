@@ -99,5 +99,23 @@
 - [BOJ_9461_파도반수열](https://www.acmicpc.net/problem/9461)
 
 0214 금요일
+- 시험 대비
+
+**WEEK03**
+0217 월요일
+- 알고리즘 과목 시험
+
+0218 화요일
+- SW검정역량평가
+
+0219 수요일
 - [BOJ 11659_구간합구하기4](https://www.acmicpc.net/problem/11659)
 - [BOJ_11726 2xN타일링](https://www.acmicpc.net/problem/11726)
+  
+0220 목요일
+- [BOJ_11727 2xN타일링2](https://www.acmicpc.net/problem/11727)
+- [BOJ 17626_FourSquares](https://www.acmicpc.net/problem/17626)
+
+0221 금요일
+- [BOJ 1012_유기농배추](https://www.acmicpc.net/problem/1012)
+- [BOJ_1260 DFS와BFS](https://www.acmicpc.net/problem/1260)
