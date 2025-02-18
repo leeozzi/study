@@ -57,6 +57,9 @@
 	4. 순서대로 모든 노드를 순서대로 출력하는 함수  
     		- printAll()
 
+0212 수요일
+- [BOJ 10816.숫자 카드 2](https://www.acmicpc.net/problem/10816)
+
 <br>
 <br>
 
