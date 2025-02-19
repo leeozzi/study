@@ -12,6 +12,7 @@ public class DoublyLinkedList implements ILinkedList {
      아니나다를까 검색해서 찾아보니 리스트 쓰는 게 아니었군....
      */
 
+    // 수인이 의견. add 할 때 추가하려는 위치까지 가는 걸 앞에서부터 갈지 뒤에서부터 갈지 정해주는 로직 있으면 좋겠다
 
     Node head;
     Node tail;

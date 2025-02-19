@@ -1,7 +1,6 @@
-package BOJ;
+package groupstudy.algorithm_lunchStudy;
 
 import java.io.*;
-import java.util.Arrays;
 
 public class BOJ17626_FourSquares {
     public static void main(String[] args) throws IOException {
@@ -62,7 +61,7 @@ public class BOJ17626_FourSquares {
             int sqr = i*i;  /// 현재 제곱수  // 헉 그렇네 이렇게 하면 나보다 제곱수를 하나씩 늘려가면서 아래 for문을 돌겠구나
             for (int j = sqr ; j <= N ; j++) {
                 dp[j] = Math.min(dp[j-sqr]+1, dp[j]);
-                // i == 1이고 j == sqr 일 때
+                // 제일 큰 제곱수를 빼주는 게 아니라, 제곱수 다 빼 보면서 최소값 찾는 거임!!!!
             }
         }
 
