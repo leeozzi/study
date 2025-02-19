@@ -7,7 +7,7 @@ import java.util.Stack;
 public class BOJ2448_별찍기11 {
     /**
      * 별 찍기 - 11
-     * https://www.acmicpc.net/problem/2448
+     * <a href="https://www.acmicpc.net/problem/2448">...</a>
      */
 
     static Stack<String> stack = new Stack<>();
