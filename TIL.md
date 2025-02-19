@@ -858,6 +858,8 @@ public class SWEA5356_의석이의세로로말해요 {
 
 ```
 
+<br>
+
 > ### SWEA4613. 러시아 국기 같은 깃발      
 > - 진심 어이 없는 데서 실수해서 계속 틀린 거였음…  
 > red 세는 조건 시작지점을 endB로 해야 하는데 startB로 해가지고… 바본가 진짜;;  
@@ -2373,7 +2375,7 @@ public class IM_공굴리기 {
 
 <br>
 
-**2025.02.17 화요일**  
+**2025.02.18 수요일**  
 > ### BOJ17626. Four Squares
 > ***DP***
 > - 최대 제곱수 빼고 나머지 숫자 인덱스로 dp에서 찾고 1 더해주면 되겠다! 까지는 진짜 문제 보자마자 생각했어
@@ -2463,3 +2465,57 @@ public int compare(Student o1, Student o2) {
 >   - 최대 힙에서 삭제 연산은 최댓값을 가진 요소를 삭제하는 것이다
 >   1. 최댓값인 루트노드를 삭제 (빈자리에는 최대힙의 마지막 노드를 삽입)
 >   2. 삽입 노드와 자식 노드를 비교, 자식 노드 중 더 큰 값과 교환 => 이 과정을 자식 노드가 둘 다 자기보다 더 작을 때까지 반복
+
+
+**2025.02.18 수요일**  
+> ### A_화분 키우기
+> - 계속 뒤에 넘어갈 숫자들을 고려해서 현재를 정하려고 했는데, 어디서 넘어왔냐를 따져서 값을 정해야하는 거였음.
+> - 진짜 제일 억울한 점은 전에 계단 문제 풀 땐가 비슷한 생각을 한 적이 있어ㅠㅠ 근데 이번엔 왜 생각을 못 해냈을까...ㅜㅜ  
+> 계단 문제랑 비슷하게 풀면 되겠는데? 까지는 생각을 했는데 키포인트가 기억이 안 났어...바보야...  
+```
+import java.util.Scanner;
+
+public class A_화분키우기 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int T = sc.nextInt();
+        for (int t = 1; t <= T; t++) {
+            int N = sc.nextInt();
+            int P = sc.nextInt();
+            int[] fer1 = new int[N];
+            int[] fer2 = new int[N];
+
+            for (int i = 0; i < N; i++)
+                fer1[i] = sc.nextInt();
+            for (int i = 0; i < N; i++)
+                fer2[i] = sc.nextInt();
+
+            for(int i = 1 ; i < N ; i++) {
+                fer1[i] = Math.max(fer1[i-1] + fer1[i] - P, fer2[i-1] + fer1[i]);
+                fer2[i] = Math.max(fer2[i-1] + fer2[i] - P, fer1[i-1] + fer2[i]);
+            }
+
+            int ans = Math.max(fer1[N-1], fer2[N-1]);
+
+            System.out.println(ans);
+        
+//            for(int i= 0 ;i < N ; i++) {
+//                System.out.println(fer[i][0] + " " + fer[i][1]);
+//            }
+
+            // 결국 한 단계 넘어갈 때마다 선택지는 두 개 밖에 없어!
+            // 이걸 어떤 기준으로 선택하느냐...
+            // 현재 위치에서 무엇이 최대인지 어떻게 알 수 있지
+
+            // 일단 갈 수 있는 애들 중에 가장 큰 애를 밟고 가볼까
+            // 내 선택이 영향을 미치는 건 다음다음까지야...
+            // ->같은 거->다른 거 하느냐, ->다른 거->같은 거 하느냐, ->다른 거->다른 거 하느냐 비교하면 되는 거 아냐?
+
+            /// 현욱's 팁 : 넘어가는 걸 고려하지 말고 넘어오는 경우의 수를 고려해라
+
+        }
+    }
+}
+
+```
