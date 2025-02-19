@@ -2475,7 +2475,7 @@ public int compare(Student o1, Student o2) {
 ```
 import java.util.Scanner;
 
-public class A_화분키우기 {
+public class SW역량검정시험 A형 화분 키우기(성공) {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
