@@ -1820,7 +1820,7 @@ for (int i = min + 1; i <= max + 1; i++) {
 // 내 풀이
 import java.util.Scanner;
 
-public class SWEA.SWEA7102_준홍이의카드놀이 {
+public class SWEA7102_준홍이의카드놀이 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -1916,7 +1916,7 @@ public class SWEA6190_정곤이의단조증가하는수 {
 ```
 import java.util.Scanner;
 
-public class SWEA.SWEA3499_퍼펙트셔플 {
+public class SWEA3499_퍼펙트셔플 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -2074,7 +2074,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-public class SWEA.SWEA1225_암호생성기_2 {
+public class SWEA1225_암호생성기_2 {
     /**
      * 암호생성기_2 (Queue 써서 풂)
      * <a href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV14uWl6AF0CFAYD&">...</a>
@@ -2468,14 +2468,14 @@ public int compare(Student o1, Student o2) {
 
 
 **2025.02.18 수요일**  
-> ### SW역량검정시험 A형 화분 키우기 (성공)
+> ### A_화분 키우기
 > - 계속 뒤에 넘어갈 숫자들을 고려해서 현재를 정하려고 했는데, 어디서 넘어왔냐를 따져서 값을 정해야하는 거였음.
 > - 진짜 제일 억울한 점은 전에 계단 문제 풀 땐가 비슷한 생각을 한 적이 있어ㅠㅠ 근데 이번엔 왜 생각을 못 해냈을까...ㅜㅜ  
 > 계단 문제랑 비슷하게 풀면 되겠는데? 까지는 생각을 했는데 키포인트가 기억이 안 났어...바보야...  
 ```
 import java.util.Scanner;
 
-public class SW역량검정시험 A형 화분 키우기(성공) {
+public class A_화분키우기 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -2499,291 +2499,9 @@ public class SW역량검정시험 A형 화분 키우기(성공) {
             int ans = Math.max(fer1[N-1], fer2[N-1]);
 
             System.out.println(ans);
-
+        
         }
     }
 }
-
-```
-
-<br>
-
-> ### SWEA1230. 암호문3
-> - 문제 읽는데 어째 input 받을 게 많길래 냅다 입력 받는 것부터 정리해줌... 엄청 쉬웠다. 푸는 데 한 10분 걸렸나.
-```
-package workingon;
-
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
-
-public class SWEA1230_암호문3 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        for (int t = 1; t <= 10; t++) {
-            int N = sc.nextInt();    // 암호문 개수
-            List<Integer> list = new LinkedList<>();    // 암호문 뭉치
-            for (int i = 0; i < N; i++)
-                list.add(sc.nextInt());// 암호문 뭉치 만들어줌
-            int M = sc.nextInt();   // 명령어 개수
-            for (int i = 0; i < M; i++) {
-                String command = sc.next();
-                if (command.equals("I")) {
-                    int x = sc.nextInt();   // 앞에서부터 x번째 암호문 바로 다음에
-                    int y = sc.nextInt();   // y개의 암호문을 삽입한다
-                    for(int j = 0; j < y ; j++) {
-                        int s = sc.nextInt();
-                        list.add(x, s);
-                        x++;
-                    }
-                } else if (command.equals("D")) {
-                    int x = sc.nextInt();
-                    int y = sc.nextInt();
-                    for(int j = 0 ; j < y ; j++) {
-                        list.remove(x);
-                    }
-                } else if (command.equals("A")) {
-                    int y = sc.nextInt();
-                    for (int j =  0 ; j < y ; j ++) {
-                        list.add(list.size()-1, sc.nextInt());
-                    }
-                }
-            }
-
-            System.out.print("#" + t + " ");
-            for(int i= 0 ; i < 10; i++) {
-                System.out.print(list.get(i) + " ");
-            }
-            System.out.println();
-        }
-    }
-}
-
-```
-
-<br>
-
-> ### SWEA1228. 암호문1
-> - 3보다 더 쉬웠다
-```
-package SWEA;
-
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
-
-public class SWEA1228_암호문1 {
-    /**
-     * 암호문1
-     * <a href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV14w-rKAHACFAYD">...</a>
-     */
-
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        for (int t = 1; t <= 10; t++) {
-            int N = sc.nextInt();   // 원본 암호문 길이
-            List<Integer> list = new LinkedList<>();
-            for (int i = 0; i < N; i++) {
-                list.add(sc.nextInt());
-            }   // 원본 암호문
-            int n = sc.nextInt();   // 명령어 개수
-            for(int i = 0 ; i < n ; i++) {
-                String command = sc.next();
-                int x = sc.nextInt();
-                int y = sc.nextInt();
-                for(int j = 0 ; j < y ; j++) {
-                    list.add(x, sc.nextInt());
-                    x++;
-                }
-            }
-
-            System.out.printf("#%d ", t);
-            for(int i = 0 ;i < 10 ; i ++) {
-                System.out.print(list.get(i) + " ");
-            }
-            System.out.println();
-
-        }
-
-    }
-}
-
-```
-
-<br>
-
-> ### SWEA1955. 숫자를 정렬하자
-> - sort 쓰면 그냥 타자연습 수준인데... 아마 정렬기법 연습하라고 넣어두신 거겠지? 나중에 정렬 연습할 때 써야겠다
-```
-package SWEA;
-
-import java.util.Arrays;
-import java.util.Scanner;
-
-public class SWEA1966_숫자를정렬하자 {
-    /**
-     * 숫자를 정렬하자
-     * <a href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5PrmyKAWEDFAUq">...</a>
-     */
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        int T = sc.nextInt();
-        for(int t = 1 ; t <= T ; t++) {
-            int N = sc.nextInt();
-            int[] arr = new int[N];
-            for(int i = 0 ;i < N ;i++)
-                arr[i] = sc.nextInt();
-            Arrays.sort(arr);
-            System.out.printf("#%d ", t);
-            for(int i =0 ; i < arr.length ;i ++) {
-                System.out.print(arr[i] + " ");
-            }
-            System.out.println();
-        }
-
-    }
-}
-
-```
-
-<br>
-
-> ### BOJ11727. 2xN타일링2
-> - 2xN타일링 첫 번째 문제랑 사실상 똑같아서 어렵진 않았다
-> - 값이 커질 경우, 오버플로우 방지 및 연산 최적화를 위해 결과에서만 모듈러 연산해서 출력하는 게 아니라 값 저장 단계에서 매번 % 10007을 적용해야 한다고 한다!
-> - dp 크기를 N+1로 정하고 배열에 초기값 직접 넣어주는 경우, N==1인 경우에 주의할 것 ! N이 1로 들어오면 dp[2] 넣어주려고 할 때 ArrayIndexOutOfBounds Error 뜸
-```
-package groupstudy.algorithm_lunchStudy;
-
-import java.io.*;
-
-public class BOJ11727_2xN타일링2 {
-    /**
-     * 2xN 타일링 2
-     * <a href="https://www.acmicpc.net/problem/11727">...</a>
-     */
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int n = Integer.parseInt(br.readLine());
-        int[] dp = new int[1001];
-        dp[1] = 1;
-            dp[2] = 3;
-            dp[3] = dp[1] * 2 + dp[2];
-            for (int i = 4; i <= n; i++) {
-                dp[i] = (dp[i - 2] * 2 + dp[i - 1]) % 10007;
-
-        }
-        System.out.println(dp[n]);
-    }
-}
-
-```
-
-<br>
-
-> ### BOJ1260. dfs와bfs
-> - 예전에 한 번 풀었던 문젠데 그때는 map으로 만들어서 풀었어서 메모리 낭비가 신경쓰였다. 그래서 이번에는 graph로 다시 풀어봄.
-> - bfs에서 재귀 쓰려고 했는데 그럴 필요가 없었다. while문으로 처리.
-> - dfs에서 정렬 때문에 애를 좀 먹었다. 자꾸 1번 케이스가 맞으면 2번 케이스가 틀리고...2번이 맞으면 1번이 틀리고...결국 그냥 오름차순 정렬하고 재귀 쓰니까 해결됨. 아직도 왜 재귀 안 쓰고 while로 풀었을 때는 마음대로 안 됐는지 확실하게 이해하지 못했다.
-```
-package BOJ;
-
-import java.io.*;
-import java.util.*;
-
-public class BOJ1260_dfs와bfs_2 {
-
-    /**
-     * dfs와 bfs
-     * <a href="https://www.acmicpc.net/problem/1260">...</a>
-     */
-
-    static Node[] nodes;
-    static int[] visited;
-
-
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String[] input = br.readLine().split(" ");
-        int N = Integer.parseInt(input[0]);
-        int M = Integer.parseInt(input[1]);
-        int V = Integer.parseInt(input[2]);
-
-        nodes = new Node[N + 1];
-        int idx = 1;    // 노드 숫자랑 인덱스랑 맞춰줄 거임
-
-        for (int i = 1; i <= N; i++) {
-            Node node = new Node();
-            node.data = i;  // N 숫자만큼 노드 만들어줘
-            node.adjacent = new ArrayList<>();  // 노드마다 인접한 숫자 넣어줄 배열 만들어줘
-            nodes[idx] = node;  // 노드배열에 넣어서 관리해줄 거야
-            idx++;
-        }
-
-        for (int i = 0; i < M; i++) {    // 간선 개수만큼 반복
-            input = br.readLine().split(" ");
-            int x = Integer.parseInt(input[0]); // x번째 노드의 인접 리스트에
-            int y = Integer.parseInt(input[1]); // y를 추가할 거야
-            nodes[x].adjacent.add(y);
-            nodes[y].adjacent.add(x);   // 서로 추가해줘야 함
-        }
-
-        /////////////////////////////////////////////
-
-        visited = new int[nodes.length];
-        dfs(V);
-        System.out.println();
-
-        visited = new int[nodes.length];
-        bfs(V);
-    }
-
-    private static void bfs(int v) {
-        Queue<Integer> queue = new LinkedList<>();
-        visited = new int[nodes.length];
-        queue.add(v);
-        visited[v] = 1; // 시작노드 방문체크 해주고
-
-        while (!queue.isEmpty()) {    // queue에 뭐라도 있는 동안 반복
-            int cur = queue.poll(); // 일단 나를 꺼내주고
-            System.out.print(cur + " ");
-
-            Collections.sort(nodes[cur].adjacent);  // 숫자가 작은 노드부터 방문해야 하므로 adjacent 정렬해줌
-
-            for (int next : nodes[cur].adjacent) {   // 나한테 인접한 녀석들 중
-                if (visited[next] != 1) {    // 방문한 적 없는 애만
-                    queue.add(next);    // queue에 넣어주고
-                    visited[next] = 1;  // 방문 체크해줘
-                }
-            }
-        }   // 한 번 끝나면 또 cur = queue.poll()로 돌아가서 얘를 시작노드로 삼아 반복해줄 거야
-
-        System.out.println();
-    }
-
-    private static void dfs(int v) {
-        Stack<Integer> stack = new Stack<>();
-        int cur = v;
-        stack.push(v);
-        visited[v] = 1;
-        System.out.print(stack.pop() + " ");
-
-        Collections.sort(nodes[cur].adjacent);
-
-        for (int next : nodes[cur].adjacent) {
-            if(visited[next] != 1)
-                dfs(next);
-        }
-    }
-
-    public static class Node {
-        int data;
-        ArrayList<Integer> adjacent;
-    }
-}
-
-
-
 
 ```
