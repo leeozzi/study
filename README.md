@@ -26,10 +26,10 @@
 - [BOJ 5427. 불](https://www.acmicpc.net/problem/5427)
 
 0211 화요일
-- [BOJ 2448.별 찍기](https://www.acmicpc.net/problem/2448)
-- [BOJ 15651.N과 M(1)](https://www.acmicpc.net/problem/15649)  
+- [BOJ 2448. 별 찍기](https://www.acmicpc.net/problem/2448)
+- [BOJ 15651. N과 M(1)](https://www.acmicpc.net/problem/15649)  
 	- 재귀로 풀기
-- [BOJ 15651.N과 M(3)](https://www.acmicpc.net/problem/15651)
+- [BOJ 15651. N과 M(3)](https://www.acmicpc.net/problem/15651)
 - 이중연결리스트 만들기  
 	- 다음 코드를 활용해서 이중연결리스트 만들어오기  
 	
@@ -58,7 +58,15 @@
     		- printAll()
 
 0212 수요일
-- [BOJ 10816.숫자 카드 2](https://www.acmicpc.net/problem/10816)
+- [BOJ 10816. 숫자 카드 2](https://www.acmicpc.net/problem/10816)
+
+0227 목요일
+- [BOJ 1654. 랜선 자르기](https://www.acmicpc.net/problem/1654)
+- [BOJ 2805. 나무 자르기](https://www.acmicpc.net/problem/2805)
+- [BOJ 3273. 두 수의 합](https://www.acmicpc.net/problem/3273)
+- [BOJ 1620. 나는야 포켓몬 마스터 이다솜](https://www.acmicpc.net/problem/1620)
+- [BOJ 7785. 회사에 있는 사람](https://www.acmicpc.net/problem/7785)
+- [BOJ 20166. 문자열 지옥에 빠진 호석](https://www.acmicpc.net/problem/20166)
 
 <br>
 <br>
@@ -68,19 +76,19 @@
 ### 📆 FEBRUARY
 **WEEK01**  
 0203 월요일
-- [BOJ_11723_집합](https://www.acmicpc.net/problem/11723)
-- [BOJ_1620_포켓몬마스터](https://www.acmicpc.net/problem/1620)
+- [BOJ 11723. 집합](https://www.acmicpc.net/problem/11723)
+- [BOJ 1620. 나는야 포켓몬 마스터 이다솜](https://www.acmicpc.net/problem/1620)
   
 0204 화요일
-- [BOJ_1764_듣보잡](https://www.acmicpc.net/problem/1764)
-- [BOJ_11047_동전0](https://www.acmicpc.net/problem/11047)
+- [BOJ 1764. 듣보잡](https://www.acmicpc.net/problem/1764)
+- [BOJ 11047. 동전0](https://www.acmicpc.net/problem/11047)
   
 0205 수요일
 - JAVA 과목시험 & 월말평가
 
 0206 목요일
-- [BOJ_17219_비밀번호찾기](https://www.acmicpc.net/problem/17219)
-- [BOJ_1003_피보나치함수](https://www.acmicpc.net/problem/1003)
+- [BOJ 17219. 비밀번호찾기](https://www.acmicpc.net/problem/17219)
+- [BOJ 1003. 피보나치함수](https://www.acmicpc.net/problem/1003)
   
 0207 금요일
 - 관통 PJT
@@ -90,16 +98,16 @@
 - 관통 PJT
 
 0211 화요일
-- [BOJ_1463_1로만들기](https://www.acmicpc.net/problem/1463)
-- [BOJ_2579_계단오르기](https://www.acmicpc.net/problem/2579)
+- [BOJ 1463. 1로만들기](https://www.acmicpc.net/problem/1463)
+- [BOJ 2579. 계단오르기](https://www.acmicpc.net/problem/2579)
 
 0212 수요일
-- [BOJ_2606_바이러스](https://www.acmicpc.net/problem/2606)
-- [BOJ_9095_123더하기](https://www.acmicpc.net/problem/9095)
+- [BOJ 2606. 바이러스](https://www.acmicpc.net/problem/2606)
+- [BOJ 9095. 123더하기](https://www.acmicpc.net/problem/9095)
 
 0213 목요일
-- [BOJ 9375_패션왕신해빈](https://www.acmicpc.net/problem/9375)
-- [BOJ_9461_파도반수열](https://www.acmicpc.net/problem/9461)
+- [BOJ 9375. 패션왕신해빈](https://www.acmicpc.net/problem/9375)
+- [BOJ 9461. 파도반수열](https://www.acmicpc.net/problem/9461)
 
 0214 금요일
 - 시험 대비
@@ -112,13 +120,28 @@
 - SW검정역량평가
 
 0219 수요일
-- [BOJ 11659_구간합구하기4](https://www.acmicpc.net/problem/11659)
-- [BOJ_11726 2xN타일링](https://www.acmicpc.net/problem/11726)
+- [BOJ 11659. 구간합구하기4](https://www.acmicpc.net/problem/11659)
+- [BOJ 11726. 2xN타일링](https://www.acmicpc.net/problem/11726)
   
 0220 목요일
-- [BOJ_11727 2xN타일링2](https://www.acmicpc.net/problem/11727)
-- [BOJ 17626_FourSquares](https://www.acmicpc.net/problem/17626)
+- [BOJ 11727. 2xN타일링2](https://www.acmicpc.net/problem/11727)
+- [BOJ 17626. FourSquares](https://www.acmicpc.net/problem/17626)
 
 0221 금요일
-- [BOJ 1012_유기농배추](https://www.acmicpc.net/problem/1012)
-- [BOJ_1260 DFS와BFS](https://www.acmicpc.net/problem/1260)
+- [BOJ 1012. 유기농배추](https://www.acmicpc.net/problem/1012)
+- [BOJ 1260. DFS와BFS](https://www.acmicpc.net/problem/1260)
+- [BOJ 27514. 1차원 2048](https://www.acmicpc.net/problem/27514)
+- [BOJ 27515. 1차원 2048과 쿼리](https://www.acmicpc.net/problem/27515)
+
+**WEEK04**  
+0223 월요일
+- 일타싸피
+
+0224 화요일
+- [BOJ 14719. 빗물](https://www.acmicpc.net/problem/14719)
+
+0225 수요일
+- [BOJ 29160. FIFA](https://www.acmicpc.net/problem/29160)
+
+0226 목요일
+- [BOJ 2943. 토끼](https://www.acmicpc.net/problem/2943)

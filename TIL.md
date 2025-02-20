@@ -2468,7 +2468,7 @@ public int compare(Student o1, Student o2) {
 
 
 **2025.02.18 수요일**  
-> ### A_화분 키우기
+> ### SW역량검정시험 A형 화분 키우기 (성공)
 > - 계속 뒤에 넘어갈 숫자들을 고려해서 현재를 정하려고 했는데, 어디서 넘어왔냐를 따져서 값을 정해야하는 거였음.
 > - 진짜 제일 억울한 점은 전에 계단 문제 풀 땐가 비슷한 생각을 한 적이 있어ㅠㅠ 근데 이번엔 왜 생각을 못 해냈을까...ㅜㅜ  
 > 계단 문제랑 비슷하게 풀면 되겠는데? 까지는 생각을 했는데 키포인트가 기억이 안 났어...바보야...  
@@ -2501,6 +2501,98 @@ public class A_화분키우기 {
             System.out.println(ans);
         
         }
+    }
+}
+
+```
+
+**2025.02.19 목요일**  
+> ### SWEA1248. 공통조상
+> ***Tree***
+>- 솔직히 트리 보고 겁부터 집어먹었다. 예전에 dfs와 bfs 풀 때 트리 구현에서 제대로 막혔던 기억이 있어서... 어렴풋이 리스트로 구현해야한다는 건 알았는데 은연중에 부정하고 있다가, 승언이가 LinkedList로 많이 한다고 얘기해줘서 그제야 '아 역시 이 수 밖에 없나...'라고 받아들이고 LinkedList 써서 풂.
+>- 원래는 Node 클래스 만들어서 부모, 자식 정보 저장해서 쓰려고 했어...그게 더 간단할 것 같았는데 생각보다 구현하기가 까다로웠음
+>- 트리구조에 겁먹음 + Node 클래스로 복잡하게 구현하려 함 이슈로 정말정말 안 풀렸는데 집 와서 LinkedList로 다시 푸니 겁 먹었던 거에 비해 수월하게 풀렸다.
+>- 요즘 뭔가 '이렇게 풀면 되겠는데?'라고 생각하고 나서 자꾸 그 생각을 의심해서 문제가 잘 안 풀리는 것 같아. 일단 이것저것 해 보면 되는데 여러 번 실패할 에너지가 없는 것 같음.
+>- BFS는 아직도 구현이 챡챡 안 된다. 거의 비슷하게 구현되는 부분이기도 하고 코드 보고 이해를 못하는 것도 아닌데 왜 자꾸 헷갈릴까. 걍 템플릿처럼 외우는 게 좋을 수도.
+>- 시간복잡도건 깔끔한 풀이건 일단 풀고 나서 나중에 생각할 것!!!!!!! 그런 것까지 생각하면서 풀어내려갈 레벨 안 되는 거 알면서 왜 자꾸 욕심부릴까...
+```
+package SWEA;
+
+import java.util.*;
+
+public class SWEA1248_공통조상 {
+
+    static List<List<Integer>> tree;
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt();
+        for(int t = 1 ; t <= T ; t++) {
+            int V = sc.nextInt();   // 노드 개수
+            int E = sc.nextInt();   //  간선 개수
+            int sub1 = sc.nextInt();    // 공통조상 찾을 애 1
+            int sub2 = sc.nextInt();    // 공통조상 찾을 애 2
+
+            // 트리 만들어주기
+            tree = new ArrayList<>();
+            for(int i = 0 ; i < V+1; i++) {
+                tree.add(new ArrayList<>());
+            }
+            for(int i = 0 ; i < E ; i++) {
+                int a = sc.nextInt();
+                int b = sc.nextInt();
+                tree.get(a).add(b);
+            }
+
+            // sub1 조상들 담아줄 배열
+            List<Integer> parent1 = new ArrayList<>();
+            findparent(parent1, sub1);
+            // sub2 조상들 담아줄 배열
+            List<Integer> parent2 = new ArrayList<>();
+            findparent(parent2, sub2);
+
+            // parent1이랑 parent2랑 비교하면서 같은 거 찾아줌
+            int res = 999;
+            for(int i = 0 ; i < parent1.size() ; i++) {
+                if(parent2.contains(parent1.get(i))){
+                    res = parent1.get(i);
+                    break;
+                }
+            }
+
+            // 음 이제 서브 트리 크기 세어줘야 해
+            // res 기준으로...계속 타고 들어가면 될 듯? 자식 null 될 때까지
+            System.out.printf("#%d %d %d", t, res, cntChild(res, 1));
+            System.out.println();
+        }
+
+    }
+
+    // 타고 올라가면서 조상 노드들 찾아줄 메서드
+    private static void findparent(List<Integer> parent, int sub) {
+        for(int i = 0 ; i < tree.size() ; i ++) {
+            if(tree.get(i).contains(sub)){
+                parent.add(i);
+                findparent(parent, i);
+            }
+        }
+    }
+
+    // 내려가면서 카운트 해줄 메서드
+    private static int cntChild(int start, int cnt){
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(start);   //  3을 넣어
+        while(!queue.isEmpty()) {
+            int cur = queue.poll(); // 3을 꺼내서 cur로 정해줘
+
+            if(tree.get(cur) != null) {
+                for (int i = 0; i < tree.get(cur).size(); i++) {    // cur의 자식 노드들 넣어줘
+                    queue.offer(tree.get(cur).get(i));
+                    cnt++;
+                }
+            }
+        }
+        return cnt;
     }
 }
 
