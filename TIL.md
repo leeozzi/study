@@ -2509,12 +2509,13 @@ public class A_화분키우기 {
 **2025.02.19 목요일**  
 > ### SWEA1248. 공통조상
 > ***Tree***
->- 솔직히 트리 보고 겁부터 집어먹었다. 예전에 dfs와 bfs 풀 때 트리 구현에서 제대로 막혔던 기억이 있어서... 어렴풋이 리스트로 구현해야한다는 건 알았는데 은연중에 부정하고 있다가, 승언이가 LinkedList로 많이 한다고 얘기해줘서 그제야 '아 역시 이 수 밖에 없나...'라고 받아들이고 LinkedList 써서 풂.
+>- 솔직히 트리 보고 겁부터 집어먹었다. 예전에 dfs와 bfs 풀 때 트리 구현에서 제대로 막혔던 기억이 있어서... 어렴풋이 리스트로 구현해야한다는 건 알았는데 은연중에 부정하고 있다가,  
+>  승언이가 그래프 구현에 LinkedList 많이 쓴다고 얘기해서 그제야 '아 역시 이 수 밖에 없나...'라고 얌전히 받아들임
 >- 원래는 Node 클래스 만들어서 부모, 자식 정보 저장해서 쓰려고 했어...그게 더 간단할 것 같았는데 생각보다 구현하기가 까다로웠음
->- 트리구조에 겁먹음 + Node 클래스로 복잡하게 구현하려 함 이슈로 정말정말 안 풀렸는데 집 와서 LinkedList로 다시 푸니 겁 먹었던 거에 비해 수월하게 풀렸다.
+>- 트리 구조에 겁먹음 + Node 클래스로 복잡하게 구현하려 함 이슈로 싸피에선 집중도 안 되고 안 풀렸는데 집 와서 LinkedList로 다시 푸니 겁 먹었던 거에 비해 수월하게 풀렸다.
 >- 요즘 뭔가 '이렇게 풀면 되겠는데?'라고 생각하고 나서 자꾸 그 생각을 의심해서 문제가 잘 안 풀리는 것 같아. 일단 이것저것 해 보면 되는데 여러 번 실패할 에너지가 없는 것 같음.
 >- BFS는 아직도 구현이 챡챡 안 된다. 거의 비슷하게 구현되는 부분이기도 하고 코드 보고 이해를 못하는 것도 아닌데 왜 자꾸 헷갈릴까. 걍 템플릿처럼 외우는 게 좋을 수도.
->- 시간복잡도건 깔끔한 풀이건 일단 풀고 나서 나중에 생각할 것!!!!!!! 그런 것까지 생각하면서 풀어내려갈 레벨 안 되는 거 알면서 왜 자꾸 욕심부릴까...
+>- 최적화는 일단 풀고 나서 생각할 것!!!!!!! 그런 것까지 생각하면서 풀어내려갈 레벨 안 되는 거 알면서 왜 자꾸 욕심부릴까...?
 ```
 package SWEA;
 
@@ -2594,6 +2595,115 @@ public class SWEA1248_공통조상 {
         }
         return cnt;
     }
+}
+
+```
+
+<br>
+
+> ### BOJ1389. 케빈 베이컨의 6단계 법칙
+> ***BFS***
+> - 그래프 만들고, distance 배열 만들어서 탐색하면서 한 층 내려갈 때마다 그 깊이를 distance로 저장해준다
+> - 접근 자체는 괜찮았던 것 같은데 구현에서 조금 막혀서 챗gpt의 도움을 받았다.
+> - 접근법 다시 한 번 정돈해보고, 구현까지 설계도 꼼꼼하게 다시 해볼 것 ! 
+> - GPT가 알려준 최적화 방법  
+>   1. N <= 100 이므로 LinkedList 보다 이차원 배열로 푸는 편이 더 직관적임  
+>   2. depth 변수로 쓰지 말고 distance[i][cur] + 1 로 사용  
+>   3. vis[] 배열을 쓰지 말고 distance 배열을 제일 처음 -1로 초기화한 다음에, distance[i][e] == -1 조건으로 사용하는 게 더 간단함]
+```
+package workingon;
+
+import java.io.*;
+import java.util.*;
+
+public class BOJ1389_케빈베이컨의6단계법칙 {
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String[] input = br.readLine().split(" ");
+        int N = Integer.parseInt(input[0]); // 노드의 수
+        int M = Integer.parseInt(input[1]); // 간선의 수
+
+        // graph 만들기
+        List<List<Integer>> graph = new ArrayList<>();
+        for(int  i = 0 ; i <= N ; i++) {
+            graph.add(new ArrayList<>());
+        }
+        for(int i = 0 ; i < M ; i++){
+            input = br.readLine().split(" ");
+            int a = Integer.parseInt(input[0]);
+            int b = Integer.parseInt(input[1]);
+            graph.get(a).add(b);
+            graph.get(b).add(a);
+        }
+
+//        System.out.println(graph);
+
+        int[][] distance = new int[N+1][N+1];   // 거리 담아줄 배열. 행 숫자 ~ 각 열까지의 거리
+
+        // 순서대로 bfs 돌려주면서 한 칸 내려갈 때마다 depth 늘려줄 거야
+        for(int i = 1; i <= N ; i++) {
+            int[] vis = new int[N+1];
+            Queue<Integer> queue = new LinkedList<>();
+            int depth = 1;
+            queue.offer(i);
+            vis[i] = 1;
+            
+            /// 이하 while 문 부분은 GPT 선생님의 도움을 받음
+            while (!queue.isEmpty()) {
+                int size = queue.size();    /// 이 부분이 추가 됨...
+                for (int s = 0; s < size; s++) {
+                    int cur = queue.poll();
+                    for (int e : graph.get(cur)) {
+                        if (vis[e] == 0) {
+                            queue.offer(e);
+                            vis[e] = 1; // 방문 체크
+                            distance[i][e] = depth; // 거리 저장
+                        }
+                    }
+                }
+                depth++; // 한 레벨 끝나면 증가
+            }
+
+            // 원래 내 코드 (틀림)
+//            while(!queue.isEmpty()){
+//                for(int e : graph.get(queue.poll())) {
+//                    if(vis[e] != 1) {
+//                        queue.offer(e);
+//                        vis[e] = 0;
+//                        distance[i][e] = depth;
+//                    }
+//                }
+//
+//                depth++;
+//            }
+
+        }
+
+        // 이제 행별로 합 구해서 min 구해줘
+        int min = Integer.MAX_VALUE;
+        int minidx = -1;
+        for(int i= 1 ; i <= N ; i++ ) {
+            int sum = 0;
+            for(int j = 1; j <= N ; j++){
+                sum += distance[i][j];
+            }
+
+            if(sum < min) {
+                min = sum;
+                minidx = i;
+            }
+
+            /// 같은 점수면 작은 값을 출력한다는 이 부분도 내가 놓쳤음..
+            else if (sum == min && i < minidx) {
+                minidx = i;
+            }
+        }
+
+        System.out.println(minidx);
+
+    }
+
 }
 
 ```
