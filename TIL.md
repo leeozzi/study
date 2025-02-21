@@ -2422,6 +2422,52 @@ public class BOJ1389_케빈베이컨의6단계법칙 {
 > ***유클리드 호제법***
 > - 트리 풀 때 부모들 따로 리스트에 저장해준 것처럼 이번에도 비슷하게 풀었는데 왠지 더 쉽게 푸는 방법 있을 것 같아서 찾아보니 유클리드 호제법이라는 게 있었다.
 > `GCD(a,b)=GCD(b,a mod b)`
+```
+// 이건 내가 푼 코드
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String[] input = br.readLine().split(" ");
+        int a = Integer.parseInt(input[0]);
+        int b = Integer.parseInt(input[1]);
+
+        List<Integer> divisor1 = new ArrayList<>();
+        for (int i = 1; i <= a; i++) {
+            if (a % i == 0) divisor1.add(i);
+        }
+
+        List<Integer> divisor2 = new ArrayList<>();
+        for (int i = 1; i <= b; i++) {
+            if (b % i == 0) divisor2.add(i);
+        }
+
+        List<Integer> standard;
+        List<Integer> theother;
+        if (a > b) {
+            standard = divisor2;
+            theother = divisor1;
+        } else {
+            standard = divisor1;
+            theother = divisor2;
+        }
+
+        int maxdiv = 0;
+
+        for (Integer i : standard) {
+            if (theother.contains(i)) {
+                maxdiv = Math.max(maxdiv, i);
+            }
+        }
+
+        System.out.println(maxdiv);
+        System.out.println(a*b/maxdiv);
+    }
+}
+
+```
 
 <br>
 
@@ -2458,6 +2504,65 @@ public class BOJ1978_소수찾기 {
         }
 
         System.out.println(cnt);
+    }
+}
+
+```
+
+<br>
+
+> ### BOJ7785. 회사에 있는 사람
+> ***HashMap***
+> - HashMap 순회 방법 공부함
+> - 아까 현욱이가 얘기한 Collections.sort(리스트, Comparator) 등장 
+> - **ISSUE 1**  
+> 처음에는 남아있는지 여부를 boolean 값으로 저장해줘야 하나 했는데
+> 생각해보니 그거나 String 으로 그대로 저장해주는 거나 별반 다를 거 없어서 그냥 진행
+> - **ISSUE 2**  
+> hashmap은 순서가 없다보니, 순회 방법이 좀 고민이었음.  
+> 함수도 찾아보고 이것저것 해보다가 entryset 쓰는 방법 발견.  
+> 이것 말고도 Iterator 나 keyset 쓰는 방법도 있다곤 하는데… 그건 다음에 보고...    
+> - **ISSUE 3**  
+> 그리고 마지막에 정렬할 때 entryset 안에서 처리해주고 싶어서 고민했는데  
+> 안 되는 것 같아서 그냥 ArrayList로 받아오는 한 단계 거쳐서 처리해줌
+```
+package groupstudy.algorithm_study;
+
+import java.io.*;
+import java.util.*;
+
+public class BOJ7785_회사에있는사람 {
+    /**
+     * 회사에 있는 사람
+     * <a href="https://www.acmicpc.net/problem/7785">...</a>
+     */
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int N = Integer.parseInt(br.readLine());
+        HashMap<String, String> hashmap = new HashMap<>();
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0 ; i < N ; i++) {
+            String[] log = br.readLine().split(" ");
+            String name = log[0];
+            String inout = log[1];
+            hashmap.put(name, inout);
+        }   // 이 반복문 돌고 나면 모든 사람의 최종 상태만 남을 거야
+
+        List<String> names = new ArrayList<>();
+
+        for(Map.Entry<String, String> entry : hashmap.entrySet()){  // HashMap의 순회 방법
+            if(entry.getValue().equals("enter")) {
+                names.add(entry.getKey());
+            }
+        }
+
+        // Collections.sort(names, Collections.reverseOrder()) 말고 이렇게도 쓸 수 있다
+        names.sort(Collections.reverseOrder());         for(String name : names) {
+            sb.append(name).append("\n");
+        }
+
+        System.out.println(sb);
     }
 }
 
