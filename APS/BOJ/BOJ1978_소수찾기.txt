@@ -1,0 +1,7 @@
+1.
+if(!flag && num != 1) cnt ++; // 다 봤는데 없으면 cnt 올려줘
+이 부분 num 써야 되는데 i로 써서 틀림
+
+2.
+for(int j = 2; j <= Math.sqrt(num) ; j++)
+이 부분 조건식 <= 말고 <로 써서 틀림

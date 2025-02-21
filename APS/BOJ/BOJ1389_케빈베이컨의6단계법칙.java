@@ -4,6 +4,10 @@ import java.io.*;
 import java.util.*;
 
 public class BOJ1389_케빈베이컨의6단계법칙 {
+    /**
+     * 케빈 베이컨의 6단계 법칙
+     * <a href="https://www.acmicpc.net/problem/1389">...</a>
+     */
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

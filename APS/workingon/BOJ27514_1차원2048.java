@@ -10,5 +10,6 @@ public class BOJ27514_1차원2048 {
         String[] arr = br.readLine().split(" ");
 
 
+
     }
 }

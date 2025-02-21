@@ -1,0 +1,41 @@
+# 유클리드 호제법
+최대공약수 구할 때 매우 효율적
+GCD(a, b) = GCD(b, a mod b)
+시간복잡도 O(logN)
+공간복잡도 O(1)
+
+***
+ 두 양의 정수 a, b에 대하여 a를 b로 나눈 몫이 q, 나머지를 r이라 하면
+ a, b의 최대공약수는 b, r의 최대공약수와 같다.
+***
+
+
+
+```
+import java.io.*;
+import java.util.*;
+
+public class BOJ2609_최대공약수와최소공배수 {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int a = Integer.parseInt(st.nextToken());
+        int b = Integer.parseInt(st.nextToken());
+
+        int gcd = getGCD(a, b);
+        int lcm = (a * b) / gcd;
+
+        System.out.println(gcd);
+        System.out.println(lcm);
+    }
+
+    static int getGCD(int a, int b) {
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+}
+```

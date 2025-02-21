@@ -1208,262 +1208,6 @@ public class SWEA1224_계산기3 {
 
 > ### 정렬 연습 (SelectionSort, QuickSort, MergeSort) 
 > ***SelectionSort, QuickSort, MergeSort***  
-> - 갑자기 정렬 알고리즘에 꽂혀서 정렬 공부 ㅎ 생각보다 정렬 알고리즘 종류가 엄청엄청 많아서 놀랐다. 너무 많아서 뭐가 뭔지 헷갈려..
-> - 영상 따라가면 이해는 되는데 구현하라고 하면 못할 것 같음. 기회 될 때 구현 연습도 해보고 싶다.
-```
-// SelectionSort
-
-package dataStructure.sorting;
-
-import java.util.Arrays;
-
-public class SelctionSort {
-    /**
-     * 선택정렬
-     * 시간복잡도 O(N^2)
-     * <a href="https://www.youtube.com/watch?v=uCUu3fF5Dws">...</a>
-     */
-
-    /*
-    정렬 안 된 배열방 중 가장 작은 애를 찾아서 맨 앞으로 보내주는 것 반복
-     */
-
-    // 함수를 선언하고 정렬할 배열을 인자로 받습니다.
-    private static void selectionSort(int[] arr) {
-        // 재귀함수를 호출하는데요
-        // 정렬이 안 된 부분의 시작 위치를 같이 넘깁니다
-        selectionSort(arr, 0);
-    }
-
-    // 재귀함수가 호출되면 배열과 시작점을 인자로 받고
-    private static void selectionSort(int[] arr, int start) {
-        // 시작점이 배열의 마지막 방보다 작은 동안 재귀함수를 호출합니다.
-        if(start < arr.length - 1) {
-            // 가장 작은 방의 인덱스를 저장할 변수 선언.
-            // 초기값은 시작 인덱스
-            int min_index = start;
-            // 시작점부터 배열의 마지막 방까지 돌면서
-            for(int i = start; i < arr.length ; i++) {
-                // 해당 배열방의 값이 작은 값이라고 생각했던 것보다 더 작으면
-                // 작은 방의 인덱스를 해당 배열방의 인덱스로 업데이트 해줍니다.
-                if(arr[i] < arr[min_index]) min_index = i;
-            }
-            // 이렇게 배열방을 끝까지 돌면서 찾은 min_index를 swap 함수를 호출해서 맨 앞에 애랑 맞바꿉니다.
-            swap(arr, start, min_index);
-            // 이제 맨 앞에 애는 정렬이 된 거니까 시작점 하나 증가시켜서 함수 다시 호출
-            selectionSort(arr, start+1);
-        }
-    }
-
-    // 두 개의 인덱스를 받아서 값을 swap 하는 함수 하나 정의
-    private static void swap (int[] arr, int index1, int index2) {
-        int tmp = arr[index1];
-        arr[index1] = arr[index2];
-        arr[index2] = tmp;
-    }
-
-    public static void main(String[] args) {
-        int[] arr = {3, 6, 1, 8, 2, 4};
-        System.out.println(Arrays.toString(arr));
-        selectionSort(arr);
-        System.out.println(Arrays.toString(arr));
-    }
-}
-
-```
-```
-// QuickSort
-package dataStructure.sorting;
-
-import java.util.Arrays;
-
-public class QuickSorting {
-    /**
-     * 퀵 정렬
-     * <a href="https://www.youtube.com/watch?v=7BDzle2n47c">...</a>
-     */
-
-     /*
-     * 시간복잡도
-     * 최악의 경우 O(N^2) 까지 갈 수도 있지만
-     * 그럴 확률이 너무 낮아서 대체로 O(NlogN)라고 함
-     */
-
-     /*
-        기준값을 선택한 후 기준값보다 작으면 왼쪽으로, 큰값을 오른쪽으로 이동시키는 방법
-        현재 pivot = 5라고 가정
-        배열의 양끝에 start와 end 포인터 한 개씩 가리킴
-        start는 pivot 값보다 작은값들을 무시하면서 계속 뒤로 가고
-        end는 pivot 값보다 큰 값들을 무시하면서 계속 앞으로 갈 거야
-        그러다가 둘이 만나고, 지나치면 작은 값들과 큰 값으로 나뉘게 되는 것
-        두 포인터가 엇갈리는 순간 반복문 끝남
-        -------------------여기까지가 함수 한 번 끝
-        방금 함수에서 start가 끝난 부분이 왼쪽 파티션의 끝이 되고,
-        end가 끝난 부분이 오른쪽 파티션의 시작점이 돼서
-
-        파티션 안에 있는 배열방이 2개 이상일 때
-            -> 정렬 시작
-    */
-
-
-    // 정렬할 배열을 인자로 받는 퀵정렬 함수
-    private static void quickSort(int[] arr) {
-        // 정렬할 배열과, 시작지점, 끝나는지점을 받아서 본격적으로 재귀함수 호출
-        quickSort(arr, 0, arr.length - 1);
-    }
-
-    private static void quickSort(int[] arr, int start, int end) {
-        // 재귀함수가 호출되면 배열의 포인터와 스타트 엔드 파티션을 나눌 range를 인자로 받음
-        // 해당 배열방의 시작과 끝 그 영역 안에서 파티션을 나누고,
-        // 나눈 파티션의 오른쪽방 첫번째 값을 part2 로 받아옵니다
-        int part2 = partition(arr, start, end);
-
-        // 오른쪽 파티션이 시작점 바로 다음에서 시작한다면, 왼쪽 파티션의 데이터가 하나뿐이니까 정렬할 필요 없음
-        if (start < part2 - 1) {   // 오른쪽 파티션이 시작점에서 한 개 이상 차이가 날 때만 재귀함수 호출
-            // 지금 이건 왼쪽 파티션이니까 시작점은 똑같고 끝나는 점은 오른쪽 파티션의 시작점 바로 전으로
-            quickSort(arr, start, part2 - 1);
-        }
-
-        // 그리고 오른쪽 파티션이 한 개 이상일 때만 호출해야 하니까
-        if (part2 < end) {     // 오른쪽 파티션의 시작점이 마지막 배열방보다 작은 경우에만 오른쪽 파티션 정렬
-            quickSort(arr, part2, end);
-        }
-    }
-
-    // 배열방의 파티션을 나누는 함수
-    // 인자로는 배열의 주소와, 파티션을 나눌 시작과 끝값 받음
-    private static int partition(int[] arr, int start, int end) {
-        // pivot 값은 배열방의 중간에 있는 값으로 한다
-        int pivot = arr[(start + end) / 2];
-        // 시작점이 끝지점보다 작거나 같은 동안만 양쪽 포인터를 옮겨줄 거야
-        while (start <= end) {
-            // start 포인터부터
-            // 배열방의 값이 pivot 값보다 작으면 무시하고 넘어갈 거야
-            while (arr[start] < pivot) start++;    // 배열방의 값이 pivot 값보다 크거나 같으면 그 자리에 멈춤
-            while (arr[end] > pivot) end--;
-            // 두 포인터가 멈춘 다음에
-            if(start <= end) {    // 혹시 서로를 지나치진 않았는지 한 번 확인해주고
-                // 아직 안 지나쳤으니까
-                swap(arr, start, end) ; // 두 개의 값을 swap 해줍니다
-                // 그리고 포인터들을 각각 한 칸씩 이동시킵니다
-                start++;
-                end--;
-            }
-        } // 이걸 두 개의 값이 만나서 지나칠 때까지 반복하면 start 포인터에 새로 나눌 배열방의 첫 번째 인덱스가 들어가게 돼요
-
-        return start;
-    }
-
-    private static void swap(int[] arr, int start, int end) {
-        int tmp = arr[start];
-        arr[start] = arr[end];
-        arr[end] = tmp;
-    }
-
-
-    public static void main(String[] args) {
-        int[] arr = {3, 9, 4, 5, 6 , 1, 7, 2, 0, 4, 8, 2};
-        System.out.println(Arrays.toString(arr));
-        quickSort(arr);
-        System.out.println(Arrays.toString(arr));
-    }
-}
-```
-```
-package dataStructure.sorting;
-
-import java.util.Arrays;
-
-public class MergeSort {
-    /** 병합 정렬
-     * <a href="https://www.youtube.com/watch?v=QAyl79dCO_k">...</a>
-     */
-
-    /*
-    1. 배열을 둘로 나눈다
-    2. 나눈 배열을 또 반씩 나눈다
-    -> 배열방에 두 개씩 남았을 때부터 merge sort를 할 수 있다
-    3. 방의 개수가 하나인 두 개의 배열이라고 생각하고,
-       새로운 빈 배열에 작은 수를 먼저 넣어주고 남은 수를 넣어준다
-       -> 정렬이 된 배열이 되었으므로 배열에 복사한다
-    4. 3의 과정을 반복하여 정렬이 된 2칸의 배열방을 여러 개 만든다
-    5. 2칸의 배열방들을 또 2개씩 병합한다.
-       이런 식으로 계속 병합해 나감
-
-     시간 복잡도 O(n log n)
-     - 실행 시 별도의 저장 공간을 필요하기 때문에 공간을 사용할 수 없는 경우에는 Quick Sort 사용
-     */
-
-    /// ///////////////////////////////////////////////////
-
-    // 정렬할 배열을 인자로 받는 mergeSort 함수
-    private static void mergeSort(int[] arr) {
-        // 임시 저장 공간 필요. 배열의 크기만큼 만들어줌
-        int[] tmp = new int[arr.length];
-
-        // 원본 배열, 임시 저장소, 시작과 끝 인덱스를 넘겨줘서 재귀함수 호출
-        mergeSort(arr, tmp, 0, arr.length - 1);
-    }
-
-    private static void mergeSort(int[] arr, int[] tmp, int start, int end) {
-        if (start < end) {   // 시작 인덱스가 끝 인덱스보다 작은 동안만 재귀호출
-            int mid = (start + end) / 2;    // 물리적으로 딱 가운데를 잘라야 하므로 가운데 인덱스 필요
-            mergeSort(arr, tmp, start, mid);    // 배열의 앞부분. start ~ 가운데까지
-            mergeSort(arr, tmp, mid + 1, end);  // 배열의 뒷부분. 가운데 바로 뒤 ~ end까지
-            merge(arr, tmp, start, mid, end);   // 두 개로 나누어진 배열방을 합쳐줄 함수
-        }
-    }
-
-    private static void merge(int[] arr, int[] tmp, int start, int mid, int end) {
-        // 우선, 임시 저장소에 정렬이 된 배열을 필요한 만큼 복사해준다.
-        for (int i = start; i <= end; i++) {
-            tmp[i] = arr[i];
-        }
-
-        int part1 = start;
-        int part2 = mid + 1;
-
-        // 양쪽 배열방에서 작은 값을 하나씩 복사할 때마다
-        // 결과 배열방의 어디에 저장해야하는지 알아야 하니까
-        // 복사 후에 하나씩 늘려줘서 다음에 저장할 곳을 기억
-        int index = start;
-
-        while (part1 <= mid && part2 <= end) {   // 첫 번째 배열이 끝까지 가거나 두 번째 배열이 끝까지 갈 때까지 반복문
-            // 두 배열방의 첫 번째 값부터 비교해서 
-            // 앞에 게 작으면 앞에 걸 옮기고 앞쪽 포인터를 하나 뒤로 옮긴다
-            // 뒤에 게 작으면 뒤에 걸 옮기고 뒤쪽 포인터를 하나 앞으로 옮긴다
-            if (tmp[part1] <= tmp[part2]) {
-                arr[index] = tmp[part1];
-                part1++;
-            } else {
-                arr[index] = tmp[part2];
-                part2++;
-            }
-            // 어느쪽 배열을 옮겼든지 간에 인덱스는 하나 늘려줘야 해
-            index++;
-        }   // 이렇게 계속 돌리면 양쪽 중 하나가 끝날 때까지 돌겠죠?
-
-        // 그런데 만약 뒤쪽은 비었고 앞쪽에는 데이터가 남아있는 경우를 대비해서
-        // 앞쪽 포인터가 배열의 끝에서 남은 만큼을 돌면서 최종적으로 저장할 배열에 남은 값들을 붙여줍니다.
-        for (int i = 0; i <= mid - part1; i++) {
-            arr[index + i] = tmp[part1 + i];
-        }
-
-        // 만약 앞쪽 배열은 비어있고, 뒤쪽 배열에 데이터가 남아있는 경우는?
-        // 뒤쪽 배열은 최종 배열의 뒤쪽에 이미 자리하고 있기 때문에
-        // 뒤쪽에 남은 데이터는 신경 안 쓰고 놔두면 됨 !
-    }
-
-    public static void main(String[] args) {
-        int[] arr = {3, 9, 4, 7, 5, 0, 1, 6, 8, 2};
-        System.out.println(Arrays.toString(arr));
-        mergeSort(arr);
-        System.out.println(Arrays.toString(arr));
-    }
-}
-
-```
-
 
 <br>
 
@@ -1761,7 +1505,7 @@ public class SWEA11315_오목판정 {
 
 <br>
 
-**2025.02.16 월요일**  
+**2025.02.17 월요일**  
 > ### SWEA6485. 삼성시의 버스 노선
 > - 입력 받을 게 많아서 문제 이해하는 게 오래 걸려서 그렇지 푸는 것 자체는 어렵지 않았음
 > - 문제가 너무 읽기 귀찮아서 일단 냅다 입력 받을 것부터 입력 받고 시작했더니 훨씬 빠르게 이해가 됐다
@@ -1950,7 +1694,6 @@ public class SWEA3499_퍼펙트셔플 {
             }
             System.out.println();
         }
-
 
     }
 }
@@ -2178,7 +1921,7 @@ public class SWEA2805_농작물수확하기 {
 
 <br>
 
-**2025.02.17 화요일**  
+**2025.02.18 화요일**  
 > ### SW역량검정시험 A형 화분 키우기 (실패)
 > - DP 쓰는 것까진 알았는데 세상에서 제일 더러운 코드를 쓰고 실패했다. 공개 테스트케이스 3개는 맞았는데 손으로 해본 거 틀려서...아마 밑에는 거의 다 틀리지 않았을까.
 > - 규칙이 어렴풋이 감만 오고 구현이 안 된다. 언제쯤 생각한 게 챡챡 코드로 정돈이 될까.
@@ -2375,7 +2118,7 @@ public class IM_공굴리기 {
 
 <br>
 
-**2025.02.18 수요일**  
+**2025.02.19 수요일**  
 > ### BOJ17626. Four Squares
 > ***DP***
 > - 최대 제곱수 빼고 나머지 숫자 인덱스로 dp에서 찾고 1 더해주면 되겠다! 까지는 진짜 문제 보자마자 생각했어
@@ -2426,48 +2169,10 @@ public class BOJ17626_FourSquares {
 
 
 > ### 자료구조 공부 (Deque)
-> ***Deque***
-> - 앞에서도 꺼낼 수 있고 뒤에서도 꺼낼 수 있는 자료구조
-> - Deque은 인터페이스 ! 구현한 클래스로는 ArrayDeque, LinkedBlockingDeque, ConcurrentLinkedDeque, LinkedList 등이 있다
-> - Deque을 활용해서 스택도 만들 수 있고 큐도 만들 수 있다
+> ***Deque, Priority Queue, Heap***
 
-> ### 자료구조 공부 (Priority Queue)
-> ***Priority Queue***
-> - 들어오는 순서와 상관없이 우선순위가 높은 데이터가 먼저 나가는 구조
-> - Priority Queue에서 우선순위 기준을 정의할 때는 Compare 메서드를 Override 해주면 된다
-```  
-<example> 
-public int compare(Student o1, Student o2) {
-    if (o1.mathScore == o2.mathScore) {
-        return o2.engScore - o1.engScore;
-    } else {
-        return o1.mathScore - o2.mathScore;
-    }
-}
-```
+<br>
 
-> ### 자료구조 공부 (Heap)
-> ***Heap***
-> - 완전 이진 트리의 일종으로, 우선순위 큐를 위하여 만들어진 자료구조
-> - 여러 개의 값들 중에서 최댓값이나 최솟값을 빠르게 찾아냄
-> - 반정렬 상태(느슨한 정렬 상태) 유지  
-> : 부모 노드의 키 값이 자식 노드의 키 값보다 항상 크거나 작은 이진 트리
-> - 힙 트리에서는 중복값 허용 O, 이진 탐색 트리에서는 중복값 허용 X
-> - 힙을 저장하는 표준 자료구조는 배열이다. 보통 0번째 인덱스는 사용하지 않는다.
-> - 특정 위치의 노드 번호는 새로운 노드가 추가되어도 변하지 않는다. ex) 루트 노드의 오른쪽 노드 번호는 항상 3이다.
-> - 왼쪽 자식의 인덱스 = 부모인덱스 * 2  
-> 오른쪽 자식의 인덱스 = 부모인덱스*2 + 1  
-> 부모인덱스 = 자식인덱스/2
-> - 삽입 방법  
->   1. 인덱스 순으로 가장 마지막 위치에 이어서 새로운 요소 삽입
->   2. 부모 노드 < 삽입 노드면 서로 교환 => 이 과정을 부모 노드가 더 클 때까지 반복
-> - 삭제 방법 (최대 힙으로 예시)   
->   - 최대 힙에서 삭제 연산은 최댓값을 가진 요소를 삭제하는 것이다
->   1. 최댓값인 루트노드를 삭제 (빈자리에는 최대힙의 마지막 노드를 삽입)
->   2. 삽입 노드와 자식 노드를 비교, 자식 노드 중 더 큰 값과 교환 => 이 과정을 자식 노드가 둘 다 자기보다 더 작을 때까지 반복
-
-
-**2025.02.18 수요일**  
 > ### SW역량검정시험 A형 화분 키우기 (성공)
 > - 계속 뒤에 넘어갈 숫자들을 고려해서 현재를 정하려고 했는데, 어디서 넘어왔냐를 따져서 값을 정해야하는 거였음.
 > - 진짜 제일 억울한 점은 전에 계단 문제 풀 땐가 비슷한 생각을 한 적이 있어ㅠㅠ 근데 이번엔 왜 생각을 못 해냈을까...ㅜㅜ  
@@ -2506,7 +2211,9 @@ public class A_화분키우기 {
 
 ```
 
-**2025.02.19 목요일**  
+<br>
+
+**2025.02.20 목요일**
 > ### SWEA1248. 공통조상
 > ***Tree***
 >- 솔직히 트리 보고 겁부터 집어먹었다. 예전에 dfs와 bfs 풀 때 트리 구현에서 제대로 막혔던 기억이 있어서... 어렴풋이 리스트로 구현해야한다는 건 알았는데 은연중에 부정하고 있다가,  
@@ -2704,6 +2411,54 @@ public class BOJ1389_케빈베이컨의6단계법칙 {
 
     }
 
+}
+
+```
+
+
+**2025.02.21 금요일**
+
+> ### BOJ2609. 최대공약수와 최소공배수
+> ***유클리드 호제법***
+> - 트리 풀 때 부모들 따로 리스트에 저장해준 것처럼 이번에도 비슷하게 풀었는데 왠지 더 쉽게 푸는 방법 있을 것 같아서 찾아보니 유클리드 호제법이라는 게 있었다.
+> `GCD(a,b)=GCD(b,a mod b)`
+
+<br>
+
+> ### BOJ1978. 소수 찾기
+> - 특정 숫자 이하의 소수를 모두 찾는 게 아니라, 특정 숫자의 소수 여부를 판별하는 거라서 에라토스테네스의 체는 못 썼다.
+> - 첨엔 제일 단순하게 N-1까지의 모든 수로 나누어봤고, 그다음엔 Math.sqrt(N)까지만 나눠 봄.
+```
+package BOJ;
+
+import java.io.*;
+import java.util.ArrayList;
+
+public class BOJ1978_소수찾기 {
+    /**
+     * 소수 찾기
+     * <a href="https://www.acmicpc.net/problem/1978">...</a>
+     */
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int N = Integer.parseInt(br.readLine());
+        String[] input = br.readLine().split(" ");
+        int cnt = 0;
+        for(int i = 0 ; i < N ; i++) {
+            int num = Integer.parseInt(input[i]);
+            boolean flag = false;
+//            for(int j = 2; j < num ; j++) { // 2부터 num-1까지 보면서
+            for(int j = 2; j <= Math.sqrt(num) ; j++) { // 2부터 num-1까지 보면서
+                if(num % j == 0) {  // 하나라도 나눠지는 수가 있으면
+                    flag = true;    // flag 바꿔주고
+                    break;  // break
+                }
+            }
+            if(!flag && num != 1) cnt ++; // 다 봤는데 없으면 cnt 올려줘
+        }
+
+        System.out.println(cnt);
+    }
 }
 
 ```
