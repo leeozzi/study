@@ -2567,3 +2567,196 @@ public class BOJ7785_회사에있는사람 {
 }
 
 ```
+
+
+
+**2025.02.22 토요일**
+
+> ### SWEA2930. 힙
+> ***Heap***
+> - 이해는 다 되는데 틀 없이 냅다 만들 수 있을 정도로 익숙하진 않은 느낌. 어려운 개념도 아닌데 이상하게 머리가 굳어있다.
+> - 배열 크기 잘못 설정해서 런타임 에러로 몇 번 fail. 10의 5승까진데 잘못 봐서 10의 4승까지로 해놨었다...
+```
+// 배열로 만들기
+package SWEA;
+
+import java.util.*;
+
+public class SWEA2930_힙 {
+
+    static int[] heap;
+    static int heapSize;
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int T = sc.nextInt();
+
+        for(int t = 1; t <= T ; t++) {
+            System.out.print("#" + t + " ");
+            heap = new int[100001];
+            heapSize = 0;
+
+            int N = sc.nextInt();
+            for(int n = 1; n <= N ; n++) {
+                int op = sc.nextInt();
+                if(op == 1) {
+                    push(sc.nextInt());
+                } else if (op == 2) {
+                    System.out.print(pop() + " ");
+                }
+            }
+
+            System.out.println();
+        }
+
+    }
+
+    public static void push(int x) {
+
+        heap[++heapSize] = x;   // 일단 냅다 넣어주고
+        
+        // 부모랑 자식 인덱스 일단 뽑아놔
+        int p = heapSize / 2;
+        int ch = heapSize; 
+
+        // 이제 자리 찾아갈 거야 (올라감)
+        while(p > 0 && heap[p] < heap[ch]){
+            swap(p, ch);
+            
+            // 인덱스 바꿔줘야지
+            ch = p;
+            p = ch/2;   // 올라간 위치의 부모
+        }
+    }
+
+    public static int pop() {
+        if(heapSize == 0)
+            return -1;
+
+        int removed = heap[1];   // 제거할 루트
+        heap[1] = heap[heapSize]; // 마지막 노드 올려주고
+        heap[heapSize--] = 0;
+
+        int p = 1;
+        int ch = p * 2; // 왼쪽 노드
+        if(ch+1 <= heapSize && heap[ch+1] > heap[ch])
+            ch += 1;
+
+        // 얘를 이제 내려줄 거야
+        while(ch <= heapSize && heap[p] < heap[ch]){
+            swap(p, ch);
+
+            p = ch; // 내 인덱스 갱신
+            ch = p * 2; // 내려간 자리의 자식
+
+            if(ch+1 <= heapSize && heap[ch+1] > heap[ch])
+                ch += 1;
+        }
+
+        return removed;
+    }
+
+    public static void swap(int idx1, int idx2) {
+        int temp = heap[idx1];
+        heap[idx1] = heap[idx2];
+        heap[idx2] = temp;
+    }
+}
+
+```
+
+```
+// pq 사용
+package SWEA;
+
+import java.util.Comparator;
+import java.util.PriorityQueue;
+import java.util.Scanner;
+
+public class SWEA2930_힙_2 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        StringBuilder sb;
+        int T = sc.nextInt();
+        for(int t = 1; t <= T ; t++) {
+            PriorityQueue<Integer> pq = new PriorityQueue<>(Comparator.reverseOrder());
+            sb = new StringBuilder();
+            sb.append("#").append(t).append(" ");
+
+            int N = sc.nextInt();
+            for(int n = 0 ; n < N ; n++) {
+                if(sc.nextInt() == 1){
+                    pq.offer(sc.nextInt());
+                } else {
+                    if(!pq.isEmpty())
+                        sb.append(pq.poll()).append(" ");
+                    else
+                        sb.append("-1 ");
+                }
+            }
+
+            System.out.println(sb);
+        }
+    }
+}
+
+```
+
+<br>
+
+> ### BO3273. 두 수의 합
+> ***투포인터***
+> - 투포인터 쓰면 되는 건 알았는데 괜히 다른 방식으로 풀어보고 싶어서 이것저것 도전하다가 오억번 틀림  
+결국 시간초과를 해결하지 못하고 투포인터로 해결했다...
+> - 근데 첨에 정렬 안 하고 썼다가 또 틀림 ㅋㅋ 
+```
+package groupstudy.algorithm_study;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class BOJ3273_두수의합 {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());    // 개수
+        String[] arr = br.readLine().split(" ");   // 수열 입력
+        List<Integer> list = new ArrayList<>(); // 수열
+        for (int i = 0; i < n; i++) {
+            list.add(Integer.parseInt(arr[i]));
+        }
+
+        Collections.sort(list);
+
+        int x = Integer.parseInt(br.readLine());    // 최종 합
+
+        int start = 0;
+        int end = list.size() - 1;
+        int cnt = 0;
+
+        System.out.println(list);
+        for (int i = start; i < list.size(); i++) {
+            for (int j = end; j > i; j--) {
+                System.out.println("현재 start 위치 : " + list.get(i) + " 현재 end 위치 : " + list.get(j));
+                if (list.get(i) + list.get(j) == x) {
+                    cnt++;
+                    end = j;
+                    System.out.println(list.get(i) + "+" + list.get(j));
+                    break;
+                }
+            }
+        }
+
+        System.out.println(cnt);
+    }
+}
+
+```
+
+<br>
+
+> ### BOJ2805. 나무 자르기
+> - 숫자가 엄청 크면 이분탐색을 의심하라고 햇다...
+    M 최대가 20억...높이 최대가 10억....? 혹시,,,,,,?
