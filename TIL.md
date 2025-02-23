@@ -2758,5 +2758,68 @@ public class BOJ3273_두수의합 {
 <br>
 
 > ### BOJ2805. 나무 자르기
-> - 숫자가 엄청 크면 이분탐색을 의심하라고 햇다...
-    M 최대가 20억...높이 최대가 10억....? 혹시,,,,,,?
+> - 숫자가 엄청 크면 이분탐색을 의심하라고 햇다...M 최대가 20억...높이 최대가 10억....? 혹시,,,,,,?
+> - 근데 그 이분탐색을 어떻게 써야할지에 대해서 고민하다가 너무 꼬였다.
+> - 첨에 생각했던 로직은  
+>
+>    1. 잘라야 하는 길이의 범위를 찾는다.  
+>        1-1) 나무들을 높은 순서로 정렬하고  
+>        1-2) 나무들 간의 높이 차이를 이용해 각 높이만큼 잘랐을 때 얻을 수 있는 양을 구한다  
+>        1-3) 그 양이 M보다 커지는 높이(maxidx)를 찾고, 구해야 하는 나무 길이 H의 범위를 maxidx의 높이와 maxidx-1의 높이 사이로 정한다  
+>    2. 그 범위 안에서 이분탐색하면서 정확한 높이를 찾아간다.  
+>    
+>   이거였는데 단계가 많아지니까 너무 헷갈림...
+>   테케도 나와있는 건 두 개 밖에 없는데 세세한 조건들이 걸렸어  
+> - 알고 보니 그냥 단순한 이분탐색으로 하면 되는 문제였다. 저렇게 단계를 나눠줄 필요가 없었음. 입력 최대값 10억 20억인 거 보고 오히려 쓸데없이 많이 생각한 듯. 그냥 단순 이분탐색 한 번 시도는 해볼걸. 그걸 왜 안 해봤지.
+> - 밤새도록 고민하고 결국 챗GPT 도움 받은 게 넘 분하긴 한데 이거 이분탐색 템플릿처럼 연습하기 좋아 보여. 잘 봐 둬야지.
+```
+package workingon;
+
+import java.io.*;
+import java.util.*;
+
+public class BOJ2805_나무자르기 {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        int N = Integer.parseInt(st.nextToken()); // 나무 개수
+        int M = Integer.parseInt(st.nextToken()); // 필요한 나무 길이
+
+        // 트리 배열 만들어주기
+        st = new StringTokenizer(br.readLine());
+        int[] arr = new int[N];
+        int maxHeight = 0;
+        for (int i = 0; i < N; i++) {
+            arr[i] = Integer.parseInt(st.nextToken());
+            maxHeight = Math.max(maxHeight, arr[i]);
+        }
+
+        // 이분탐색
+        int left = 0;
+        int right = maxHeight;
+        int res = 0;
+
+        while (left <= right) {
+            int mid = (left + right) / 2;
+            long sum = 0;
+
+            for (int i = 0; i < N; i++) {
+                if (arr[i] > mid)
+                    sum += (arr[i] - mid);
+            }
+
+            if (sum < M)
+                right = mid - 1;
+
+            else if (sum >= M) {
+                res = mid;
+                left = mid + 1;
+            }
+        }
+
+        System.out.println(res);
+
+    }
+}
+```

@@ -1,9 +1,9 @@
-package workingon;
+package groupstudy.algorithm_study;
 
 import java.io.*;
 import java.util.*;
 
-public class BOJ2805_나무자르기 {
+public class BOJ2805_나무자르기_fail {
     /**
      * <a href="https://www.acmicpc.net/problem/2805">...</a>
      */
@@ -24,7 +24,7 @@ public class BOJ2805_나무자르기 {
 
         // 일단 높은 순서대로 정렬
         Collections.sort(arr, Comparator.reverseOrder());
-        System.out.println(arr);    /* 테스트 출력이에요 */
+//        System.out.println(arr);    /* 테스트 출력이에요 */
 
         // 갭 배열
         int[] gaparr = new int[N];
@@ -32,13 +32,13 @@ public class BOJ2805_나무자르기 {
             int gap = arr.get(i-1) - arr.get(i);
             gaparr[i] = gap;
         }
-        System.out.println(Arrays.toString(gaparr));
+//        System.out.println(Arrays.toString(gaparr));
 
         // 갭 누적합으로 만들어주기 == 이 위치에서 잘랐을 때 얻을 수 있는 양
         for (int i = 1; i < N ; i++){
             gaparr[i] = gaparr[i-1] + gaparr[i]*i;
         }
-        System.out.println(Arrays.toString(gaparr));
+//        System.out.println(Arrays.toString(gaparr));
 
         // M 범위 찾기
         int maxidx = 0;
@@ -61,29 +61,41 @@ public class BOJ2805_나무자르기 {
 
         // 처음에 minidx값+1에서 잘라보고, 더 크면 (minidx값+maxidx값)/2 해서 잘라보고...
         // 자르는 높이를 H라고 했을 때, arr.get(maxidx) 여기부터 잘려. 그 밑으론 고려 안 해도 돼
-        int H = min + 1;
-        while(H > arr.get(minidx) && H < arr.get(maxidx)) {
+        int upto = max;
+        int downto = min;
+//        System.out.println("현재 upto : " + upto + " 현재 downto : " + downto);
+//        System.out.println("max : " + max + " min : " + min);
+        int H = downto;
+        if(upto == downto) {    // 8 6 6 6 6 이런 애들 때문에 조건 따로 만들어줌
+            int sum = 0;
+            while(sum < M) {
+                H--;
+                sum = 0;
+                for (int i = 0; i < arr.size(); i++) {
+                    sum += (arr.get(i) - H);
+                }
+            }
 
+            System.out.println(H);
+            return;
+        }
+
+        while(downto < upto) {
+            H = (upto+downto)/2;
             // sum = maxidx 직전까지의 누적합 + (arr.get(maxidx)-H)*(maxidx+1)
             int sum = gaparr[maxidx] + (max - H) * (maxidx + 1);
+            if(sum < M)
+                upto = (H + downto)/2;
 
-            if(sum < M) {
-                min = H;
-                H = (H+arr.get(minidx))/2-1;
-            }
-
-            else if (sum > M) {
-                max = H;
-                H = (H+arr.get(maxidx))/2+1;
-            }
+            else if (sum > M)
+                downto = (H+upto)/2; // 이거보단 더 위여야 해~
 
             else {
                 System.out.println(H);
                 return;
             }
-
-            System.out.println(H);
-            System.out.println(sum);
         }
+
+        System.out.println(H);
     }
 }
