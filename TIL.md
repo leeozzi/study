@@ -2892,7 +2892,7 @@ public class BOJ1654_랜선자르기 {
 
 ```
 
-**2025.02.25 화요일**
+**2025.02.24 월요일**
 
 > ### BOJ14719. 빗물
 > - 골드의 벽...진짜 너무 어려웠다. 투포인터 써서 풀긴 했는데 스택으로 푸는 방법도 있었다. 근데 진짜 너무 이해가 안 돼서 머리 터질 뻔했다. 결국 이해해냄...내가 해냄...
@@ -3000,6 +3000,74 @@ public class BOJ14719_빗물 {
         }
 
         System.out.println(cnt);
+    }
+}
+
+```
+
+
+**2025.02.26 수요일**
+
+> ### BOJ29160. 나의 FIFA 팀 가치는?
+***Priority Queue***
+>- 입력값 받기 실수 실화임..?ㅠㅠㅠㅠㅠㅠㅠ이거 못 찾아서 오천번 시도하고 결국 수인이가 알려줌....
+>- PQ 쓰는 것만 떠올리면 논리 자체는 그렇게 어렵지 않은 문제였다.
+```
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    /**
+     * 나의 FIFA 팀 가치는?
+     * <a href="https://www.acmicpc.net/problem/29160">...</a>
+     */
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String[] input = br.readLine().split(" ");
+        int N = Integer.parseInt(input[0]);
+        int K = Integer.parseInt(input[1]);
+
+        List<PriorityQueue<Integer>> positions = new ArrayList<>();
+
+        for(int i = 0 ; i < 12 ; i++) {
+            positions.add(new PriorityQueue<>(Collections.reverseOrder()));
+        }
+
+        for(int i = 0 ; i < N ; i++) {
+            input = br.readLine().split(" ");
+            int P = Integer.parseInt(input[0]);
+            int W = Integer.parseInt(input[1]);
+            positions.get(P).offer(W);
+        }
+
+        // 3월 더해줘
+        int[] selected = new int[12];
+        for(int i = 0 ; i < 12 ; i++){
+            if(!positions.get(i).isEmpty()) {
+                selected[i] = positions.get(i).poll();
+            }
+        }
+
+        while(K-- > 0) {
+            // 8월 빼줘
+            for (int i = 1; i < 12; i++) {
+                positions.get(i).offer(Math.max(selected[i] - 1,0));
+            }
+
+            // 11월 다시 재구성
+            for (int i = 1; i < 12; i++) {
+                if (!positions.get(i).isEmpty()) {
+                    selected[i] = positions.get(i).poll();
+                }
+            }
+        }
+
+        int sum = 0;
+        for(int i = 1 ; i < 12 ; i++) {
+            sum += selected[i];
+        }
+
+        System.out.println(sum);
     }
 }
 
