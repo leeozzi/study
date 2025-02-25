@@ -28,26 +28,32 @@ public class BOJ14719_빗물_stack활용방법 {
         }
         /// 여기까지가 input. 블록 높이까지 저장
 
-        // 제일 낮은 벽을 전체에서 다 뺴줌 -> 연산 줄이기
-        if(min != 0) {
-            h -= min;
-            for(int i = 0 ; i < w ; i++) {
-                h = min;
-            }
-        }
+//        // 제일 낮은 벽을 전체에서 다 빼줌 -> 연산 줄이기
+//        if(min != 0) {
+//            h -= min;
+//            for(int i = 0 ; i < w ; i++) {
+//                heights[i] -= min;
+//            }
+//        }
 
         int water = 0;
         for(int i = h ; i >= 1; i--) {
+//            System.out.println("현재 검사중인 높이 : " + i);
             // 공간의 최대 높이에서부터 한 줄씩 내려가면서 검사
             for(int j = 1; j <= w ; j++) {
+//                System.out.println("현재 검사중인 블록 위치 : " + j);
                 if(heights[j-1] >= i) {  // i는 검사하는 라인. 블록이 여기보다 높이 쌓여있으면
                     if(blocks.isEmpty()) {  // 스택이 비어있다면 처음 맞딱뜨린 벽이다
                         blocks.push(j); // 2차원 좌표평면상 x축의 값인 j 넣어줌
+//                        System.out.println("방금 처음 스택에 들어옴 : " + blocks);
                     }
                     else {  // 블록이 현재 검사 라인보다 높고, 스택이 비어있지 않다면
+//                        System.out.println(blocks);
                         water += j - blocks.pop() - 1;
+//                        System.out.println("water : " + water);
                         // x 좌표의 차이만큼 water에다 넣어줌
                         blocks.push(j); // 이 벽도 넣어줘야 다음 벽과 상호작용 가능
+//                        System.out.println(blocks);
                     }
                 }
             }

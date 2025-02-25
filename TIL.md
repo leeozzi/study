@@ -2823,3 +2823,184 @@ public class BOJ2805_나무자르기 {
     }
 }
 ```
+
+
+**2025.02.23 일요일**
+
+> ### BOJ1654. 랜선 자르기
+> - 나무 자르기에 시달리고 난 후라서 이분탐색이 머리에 남아있었음 + 조건에 범위 2^31 - 1까지인 거 보고 이분탐색 생각하다가 일단 냅다 템플릿처럼 써봄.
+> - 0으로 나눠지는 경우랑, long 써야하는 거 생각 못해서 몇 번 틀림..
+> 0으로 나눠지는 경우는 진짜 도저히 못 찾겠어서 반례 찾아주는 사이트에 SOS 침.
+> - Q. 근데 int 표현 범위가 2^31-1까진데 왜 long 써야 했던 거지?
+```
+package workingon;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
+
+public class BOJ1654_랜선자르기 {
+    public static void main(String[] args) throws IOException {
+        /* 입력 받기 */
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int K = Integer.parseInt(st.nextToken());   // 이미 가지고 있는 랜선의 개수
+        int N = Integer.parseInt(st.nextToken());   // 필요한 랜선의 개수
+        long[] arr = new long[K];
+        long max = 0;
+        for (int i = 0; i < K; i++) {
+            String line = br.readLine();
+            arr[i] = Integer.parseInt(line);
+            max = Math.max(arr[i], max);
+        }
+
+        /* 이분 탐색 해줄 거야 */
+        long left = 0;
+        long right = max;
+        long res = 0;
+
+        while (left <= right) {
+            long mid = (left + right) / 2;
+//            System.out.println("left : " + left + " right : " + right + " mid : " + mid);
+
+            // 자른 개수 봐야지
+            int cut = 0;
+            for (int i = 0; i < K; i++) {
+                if(mid == 0)
+                    mid = 1;
+                    cut += (arr[i] / mid);
+            }
+
+            if (cut < N) {
+                right = mid - 1;
+            }
+
+            if(cut >= N) {
+                left = mid + 1;
+                res = mid;
+            }
+
+        }
+
+        System.out.println(res);
+
+
+    }
+}
+
+```
+
+**2025.02.25 화요일**
+
+> ### BOJ14719. 빗물
+> - 골드의 벽...진짜 너무 어려웠다. 투포인터 써서 풀긴 했는데 스택으로 푸는 방법도 있었다. 근데 진짜 너무 이해가 안 돼서 머리 터질 뻔했다. 결국 이해해냄...내가 해냄...
+> - 근데 사실상 내 코드라는 생각은 안 든다. 완전히 익힐 때까지 봐야지.
+```
+// 투포인터 사용
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        /// 입력 받기
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int H = Integer.parseInt(st.nextToken());
+        int W = Integer.parseInt(st.nextToken());
+        int[] arr = new int[W];
+        st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < W; i++) {
+            arr[i] = Integer.parseInt(st.nextToken());
+        }
+
+        // 투포인터 만들기
+        int left = 0;
+        int right = arr.length - 1;
+        int leftMax = arr[left];
+        int rightMax = arr[arr.length-1];
+        int cnt = 0;
+
+
+        while (left < right) {
+            if(arr[left] < arr[right]){
+                left ++;
+                if(arr[left] >= leftMax){
+                    leftMax = arr[left];
+                } else {
+                    cnt += (leftMax - arr[left]);
+                }
+            }
+
+            else {
+                right --;
+                if(arr[right] >= rightMax){
+                    rightMax = arr[right];
+                } else {
+                    cnt += (rightMax - arr[right]);
+                }
+            }
+        }
+
+        System.out.println(cnt);
+    }
+}
+
+```
+```
+// Stack 사용
+package groupstudy.algorithm_lunchStudy;
+
+import java.io.*;
+import java.util.*;
+
+public class BOJ14719_빗물 {
+    /**
+     * 빗물
+     * <a href="http://acmicpc.net/problem/14719">...</a>
+     */
+    public static void main(String[] args) throws IOException {
+        /// 입력 받기
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int H = Integer.parseInt(st.nextToken());
+        int W = Integer.parseInt(st.nextToken());
+        int[] arr = new int[W];
+        st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < W; i++) {
+            arr[i] = Integer.parseInt(st.nextToken());
+        }
+
+        // 투포인터 만들기
+        int left = 0;
+        int right = arr.length - 1;
+        int leftMax = arr[left];
+        int rightMax = arr[arr.length-1];
+        int cnt = 0;
+
+        while (left < right) {
+            if(arr[left] < arr[right]){
+                left ++;
+                if(arr[left] >= leftMax){
+                    leftMax = arr[left];
+                } else {
+                    cnt += (leftMax - arr[left]);
+                }
+            }
+
+            else {
+                right --;
+                if(arr[right] >= rightMax){
+                    rightMax = arr[right];
+                } else {
+                    cnt += (rightMax - arr[right]);
+                }
+            }
+        }
+
+        System.out.println(cnt);
+    }
+}
+
+```
