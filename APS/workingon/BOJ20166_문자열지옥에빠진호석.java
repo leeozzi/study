@@ -10,54 +10,67 @@ public class BOJ20166_문자열지옥에빠진호석 {
      */
 
     static char[][] map;
-    static StringBuilder sb;
+    static int[] dx = {-1, -1, 0, 1, 1, 1, 0, -1};
+    static int[] dy = {0, 1, 1, 1, 0, -1, -1, -1};
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
         int N = Integer.parseInt(st.nextToken());   // 행. 3~10
         int M = Integer.parseInt(st.nextToken());   // 열. 3~10
-        int K = Integer.parseInt(st.nextToken());   // 신이 좋아하는 문자열의 개수. 1000개 이하 
+        int K = Integer.parseInt(st.nextToken());   // 신이 좋아하는 문자열의 개수. 1000개 이하
         // 찾아야하는 문자열 길이는 3~10
 
-        map = new char[N][M];
+        ///////입력 받기 완료/////////
 
+        map = new char[N][M];
         for (int i = 0; i < N; i++) {
             String line = br.readLine();
             for (int j = 0; j < M; j++) {
-                map[i][j] = line.charAt(j);
+                char cur = line.charAt(j);
+                map[i][j] = cur;
             }
         }
-        ///////입력 받기 완료/////////
 
-        Queue<Character> queue = new LinkedList<>();
-        int cnt = 0;
-
-        for(int k = 0 ; k < K ; k++) {
+        for (int k = 0; k < K; k++) {   // 단어들 별로 세어줄게
             String target = br.readLine();
+            int sum = 0;
 
             for (int i = 0; i < N; i++) {
                 for (int j = 0; j < M; j++) {
-                    queue.offer(map[i][j]);     // 가로로 한 줄 넣어주고
+                    if (map[i][j] == target.charAt(0)) {  // 시작 문자 같은 거 찾아서 dfs 돌려줄게
+                        sum += dfs(new int[]{i, j}, target, 1);
+                    }
                 }
-
-                cnt += cntwords(queue, target);
-                queue.clear();
             }
+
+            System.out.println(sum);
         }
     }
 
-    private static int cntwords(Queue<Character> queue, String target) {
-        int cnt = 0;
-        sb = new StringBuilder();
+    // loc 좌표 주변에서 target의 idx번째 char을 찾는 함수
+    public static int dfs(int[] loc, String target, int idx) {
+        if(idx == target.length()) {
+            return 1;
+        }
 
-        for(int i = 0 ; i < queue.size() ; i++) {
-            char cur = queue.poll();
-            if(cur == target.charAt(i)) {
-                sb.append(cur);
+        int i = loc[0];
+        int j = loc[1];
+        int count = 0;
+
+        for (int d = 0; d < 8; d++) {
+            int nx = i + dx[d];
+            int ny = j + dy[d];
+            nx = (nx + map.length) % map.length;
+            ny = (ny + map[0].length) % map[0].length;
+
+            if(map[nx][ny] == target.charAt(idx)){
+                // 여기를 손봐야 할 것 같아
+                // 먼가...음...어디까지 맞는지 보고? 음....음.....
+                count += dfs(new int[] {nx, ny}, target, idx+1);
             }
         }
 
-        return cnt;
+        return count;
     }
 }
