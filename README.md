@@ -68,6 +68,22 @@
 - [BOJ 7785. 회사에 있는 사람](https://www.acmicpc.net/problem/7785)
 - [BOJ 20166. 문자열 지옥에 빠진 호석](https://www.acmicpc.net/problem/20166)
 
+0306 목요일
+- [BOJ 1991. 트리 순회](https://www.acmicpc.net/problem/1991)
+- [BOJ 20922. 겹치는 건 싫어](https://www.acmicpc.net/problem/20922)
+- [BOJ 1325. 효율적인 해킹](https://www.acmicpc.net/problem/1325)
+- [BOJ 16401. 과자 나눠주기](https://www.acmicpc.net/problem/16401)
+- [BOJ 15655. N과 M(6)](https://www.acmicpc.net/problem/15655)
+- [BOJ 2164. 카드2](https://www.acmicpc.net/problem/2164)
+- [BOJ 17471. 게리맨더링](https://www.acmicpc.net/problem/17471)
+- [BOJ 2580. 스도쿠](https://www.acmicpc.net/problem/2580)
+- [BOJ 2295. 세 수의 합](https://www.acmicpc.net/problem/2295)
+- [BOJ 4485. 녹색 옷 입은 애가 젤다지?](https://www.acmicpc.net/problem/4485)
+- [BOJ 15681. 트리와 쿼리](https://www.acmicpc.net/problem/15681)
+
+
+
+
 <br>
 <br>
 
@@ -141,7 +157,7 @@
 - [BOJ 14719. 빗물](https://www.acmicpc.net/problem/14719)
 
 0225 수요일
-- [BOJ 29160. FIFA](https://www.acmicpc.net/problem/29160)
+- [BOJ 29160. 나의 FIFA 팀 가치는?](https://www.acmicpc.net/problem/29160)
 
 0226 목요일
 - [BOJ 2943. 토끼](https://www.acmicpc.net/problem/2943)

@@ -4,6 +4,10 @@ import java.io.*;
 import java.util.*;
 
 public class BOJ20166_문자열지옥에빠진호석 {
+    /**
+     * 문자열 지옥에 빠진 호석
+     * <a href="https://www.acmicpc.net/problem/20166">...</a>
+     */
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
@@ -28,7 +32,11 @@ public class BOJ20166_문자열지옥에빠진호석 {
 
         ///////입력 받기 완료/////////
         
-        
+        for(int i = 0 ; i < K ; i++){
+            String target = words[i];
+
+            
+        }
 
 
     }
