@@ -1,15 +1,17 @@
-package SWEA;
+package workingon;
 
 import java.util.LinkedList;
 import java.util.Stack;
 import java.util.Scanner;
 
 public class SWEA1949_등산로조성 {
+    /**
+     * <a href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5PoOKKAPIDFAUq">...</a>
+     */
 
     static int[][] map;
     static boolean[][] visited;
     static Stack<int[]> stack;
-    static int distance;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -37,8 +39,6 @@ public class SWEA1949_등산로조성 {
                     }
                 }
             }
-
-
         }   // testcase
     }
 
@@ -53,7 +53,6 @@ public class SWEA1949_등산로조성 {
         int[] dx = {-1, 0, 1, 0};
         int[] dy = {0, 1, 0, -1};
 
-
         for (int d = 0; d < 4; d++) {
             int nx = i + dx[d];
             int ny = j + dy[d];
@@ -61,7 +60,7 @@ public class SWEA1949_등산로조성 {
             if (nx >= 0 && nx < map.length && ny >= 0 && ny < map.length) {
                 if (map[nx][ny] < map[i][j] && !visited[nx][ny]) {
                     int[] next = {nx, ny};
-                    queue.add(next);
+                    stack.add(next);
                     visited[nx][ny] = true;
                     dfs(next);
                 }
