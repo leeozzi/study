@@ -111,6 +111,8 @@
 0207 금요일
 - 관통 PJT
 
+<br>
+
 **WEEK02**  
 0210 월요일
 - 관통 PJT
@@ -129,6 +131,8 @@
 
 0214 금요일
 - 시험 대비
+
+<br>
 
 **WEEK03**  
 0217 월요일
@@ -150,6 +154,8 @@
 - [BOJ 1260. DFS와BFS](https://www.acmicpc.net/problem/1260)
 - [BOJ 27514. 1차원 2048](https://www.acmicpc.net/problem/27514)
 - [BOJ 27515. 1차원 2048과 쿼리](https://www.acmicpc.net/problem/27515)
+
+<br>
 
 **WEEK04**  
 0224 월요일
