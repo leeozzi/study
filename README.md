@@ -16,7 +16,6 @@
 <br>
 
 ### 📆 FEBRUARY
-**WEEK 01**  
 0204 화요일
 - JAVA 과목시험 & 월말평가 대비
 
@@ -68,6 +67,7 @@
 - [BOJ 7785. 회사에 있는 사람](https://www.acmicpc.net/problem/7785)
 - [BOJ 20166. 문자열 지옥에 빠진 호석](https://www.acmicpc.net/problem/20166)
 
+### 📆 MARCH
 0306 목요일
 - [BOJ 1991. 트리 순회](https://www.acmicpc.net/problem/1991)
 - [BOJ 20922. 겹치는 건 싫어](https://www.acmicpc.net/problem/20922)
@@ -150,14 +150,36 @@
 - [BOJ 27515. 1차원 2048과 쿼리](https://www.acmicpc.net/problem/27515)
 
 **WEEK04**  
-0223 월요일
+0224 월요일
 - 일타싸피
 
-0224 화요일
+0225 화요일
 - [BOJ 14719. 빗물](https://www.acmicpc.net/problem/14719)
 
-0225 수요일
+0226 수요일
 - [BOJ 29160. 나의 FIFA 팀 가치는?](https://www.acmicpc.net/problem/29160)
 
-0226 목요일
+0227 목요일
 - [BOJ 2943. 토끼](https://www.acmicpc.net/problem/2943)
+
+0228 금요일
+- 관통PJT
+
+<br>
+
+### 📆 MARCH
+**WEEK01**  
+0303 월요일
+- 대체공휴일
+
+0304 화요일
+- 과목평가 & 월말평가 & 역량평가
+
+0305 수요일
+- [BOJ 25918. 북극곰은 괄호를 찢어](https://www.acmicpc.net/problem/25918)
+
+0306 목요일
+- [BOJ 21608. 상어 초등학교](https://www.acmicpc.net/problem/21608)
+
+0307 금요일
+- [BOJ 28353. 고양이 카페](https://www.acmicpc.net/problem/28353)
