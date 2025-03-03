@@ -7,6 +7,10 @@ import java.util.Comparator;
 import java.util.List;
 
 public class SWEA2382_미생물격리 {
+    /**
+     * 미생물 격리
+     * <a href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV597vbqAH0DFAVl">...</a>
+     */
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -93,9 +97,7 @@ public class SWEA2382_미생물격리 {
 //                            cur.c = cur.nextC;
 //                        }
                     }
-
                 }
-
             }
 
             int res = 0;
