@@ -1,4 +1,4 @@
-package workingon;
+package groupstudy.algorithm_study;
 
 import java.io.*;
 import java.util.*;
@@ -12,9 +12,11 @@ public class BOJ20166_문자열지옥에빠진호석 {
     static char[][] map;
     static int[] dx = {-1, -1, 0, 1, 1, 1, 0, -1};
     static int[] dy = {0, 1, 1, 1, 0, -1, -1, -1};
+    static HashMap<String, Integer> hashmap;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
         StringTokenizer st = new StringTokenizer(br.readLine());
         int N = Integer.parseInt(st.nextToken());   // 행. 3~10
         int M = Integer.parseInt(st.nextToken());   // 열. 3~10
@@ -33,6 +35,7 @@ public class BOJ20166_문자열지옥에빠진호석 {
         }
 
         for (int k = 0; k < K; k++) {   // 단어들 별로 세어줄게
+            hashmap = new HashMap<>();
             String target = br.readLine();
             int sum = 0;
 
@@ -44,8 +47,9 @@ public class BOJ20166_문자열지옥에빠진호석 {
                 }
             }
 
-            System.out.println(sum);
+            sb.append(sum).append("\n");
         }
+        System.out.println(sb);
     }
 
     // loc 좌표 주변에서 target의 idx번째 char을 찾는 함수
@@ -56,6 +60,11 @@ public class BOJ20166_문자열지옥에빠진호석 {
 
         int i = loc[0];
         int j = loc[1];
+
+        if(hashmap.containsKey(i+","+j+","+idx)) {
+            return hashmap.get(i+","+j+","+idx);
+        }
+
         int count = 0;
 
         for (int d = 0; d < 8; d++) {
@@ -65,11 +74,11 @@ public class BOJ20166_문자열지옥에빠진호석 {
             ny = (ny + map[0].length) % map[0].length;
 
             if(map[nx][ny] == target.charAt(idx)){
-                // 여기를 손봐야 할 것 같아
-                // 먼가...음...어디까지 맞는지 보고? 음....음.....
                 count += dfs(new int[] {nx, ny}, target, idx+1);
             }
         }
+
+        hashmap.put(i+","+j+"," + idx,count);
 
         return count;
     }
