@@ -1,0 +1,18 @@
+/*
+        1. 재료 조합을 짜고    ex) [식재료1, 식재료2], [식재료3, 식재료4]
+        2. 짠 조합 안에서 맛 총합 구하고 차이 구해줘. 최소 차이값 갱신.
+            for(int i = 0 ; i < N/2 ; i++) {
+                for(int j = 0 ; j < N/2; j++) {
+                    sum1 += map[com1[i]][com1[j]];
+                    sum1 += map[com1[j]][com1[i]];
+
+                    sum2 += map[com2[i]][com2[j]];
+                    sum2 += map[com2[j]][com2[i]];
+                }
+            }
+            int diff = Math.abs(sum1 - sum2);
+            min = Math.min(min, diff);
+        3. 더 이상 새로운 조합이 없으면 min 출력
+        ============
+        - 조합 짜는 함수에서 diff를 리턴하자
+    */
