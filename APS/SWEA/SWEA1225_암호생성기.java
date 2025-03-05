@@ -28,7 +28,7 @@ public class SWEA1225_암호생성기 {
                     list.add(list.get(0) - i);
                     list.remove(0);
 
-                    if (list.getLast() <= 0) {
+                    if (list.get(list.size()-1) <= 0) {
                         list.set(list.size()-1, 0);
                         break loop;
                     }
