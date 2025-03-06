@@ -32,27 +32,7 @@ public class BOJ20922_겹치는건싫어 {
         System.out.println(Arrays.toString(arr));
         System.out.println(Arrays.toString(cnts));
 
-        // i )
-        // 왼쪽이 K개보다 많으면
-        // cnts[arr[left]]-- 해주고
-        // left++ 해서 옮기고
-        // 옮긴 칸에서 또 봐. 본 숫자가 K개 이하일 때까지 옮겨.
 
-        // 왼쪽 멈추고 나면 오른쪽 봐
-        
-        // 오른쪽이 K개보다 많으면
-        // cnts[arr[left]]-- 해주고
-        // right-- 해서 옮기고
-        // 옮긴 칸에서 또 봐. cnt가 K개 이하인 애 나올 때까지 옮겨.
-
-        // ii )
-        // 그러다가 둘 다 멈추면, 거기서 한 번 arr[left -> right] 탐색
-        // cnts[arr[i]] > K 인 애 발견하면
-        // right - i 랑 left - i 랑 비교해서 더 작은 쪽 포인터를 걔한테까지 옮겨줄건데
-        // 지나가는 애들 cnt 줄여주면서 가야 함
-
-        // 도착하면 또 i부터 반복
-        // ii 에서 cnts[arr[i]] > K 인 애가 없으면 right - left 해서 개수 구해줘
         
         int left = 0;
         int right = arr.length - 1;
