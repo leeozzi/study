@@ -64,7 +64,8 @@ public class QuickSorting {
         while (start <= end) {
             // start 포인터부터
             // 배열방의 값이 pivot 값보다 작으면 무시하고 넘어갈 거야
-            while (arr[start] < pivot) start++;    // 배열방의 값이 pivot 값보다 크거나 같으면 그 자리에 멈춤
+            // 배열방의 값이 pivot 값보다 크거나 같으면 그 자리에 멈춤
+            while (arr[start] < pivot) start++;
             while (arr[end] > pivot) end--;
             // 두 포인터가 멈춘 다음에
             if(start <= end) {    // 혹시 서로를 지나치진 않았는지 한 번 확인해주고
