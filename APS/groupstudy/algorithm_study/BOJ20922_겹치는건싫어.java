@@ -1,9 +1,8 @@
-package workingon;
+package groupstudy.algorithm_study;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
 
 public class BOJ20922_겹치는건싫어 {
     /**
@@ -29,14 +28,21 @@ public class BOJ20922_겹치는건싫어 {
         int maxLen = 0;
 
         while (right < N) {
-//            System.out.println("현재 왼쪽 위치 : " + left + " 현재 오른쪽 위치 : " + right);
-            cnt[arr[right]]++;  // 현재 숫자 카운트 추가
+
             // 만약 현재 숫자가 K를 초과하면
-            if (cnt[arr[right]] > K) {
+//            System.out.println("현재 left 숫자 : " + arr[left] + " / 현재 right 숫자 : " + arr[right] + " / cnt : " + cnt[arr[right]]);
+            if (cnt[arr[right]] < K) {
+                cnt[arr[right]]++;  // 현재 숫자 카운트 추가
+                right++;
+            } else {
                 cnt[arr[left]]--;
                 left++;
             }
-            right++;
+            maxLen = Math.max(right - left, maxLen);
+//            for(int i = left ; i < right ; i++) {
+//                System.out.print(arr[i] + " ");
+//            }
+//            System.out.println();
         }
 
         System.out.println(maxLen);

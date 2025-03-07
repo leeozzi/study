@@ -1,4 +1,4 @@
-package workingon;
+package groupstudy.algorithm_lunchStudy;
 
 import java.io.BufferedReader;
 import java.io.IOException;
