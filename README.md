@@ -109,6 +109,16 @@
 > - [BOJ 2295. 세 수의 합](https://www.acmicpc.net/problem/2295)
 > - [BOJ 4485. 녹색 옷 입은 애가 젤다지?](https://www.acmicpc.net/problem/4485)
 > - [BOJ 15681. 트리와 쿼리](https://www.acmicpc.net/problem/15681)
+
+<br>
+
+>**0313 목요일**
+> - [BOJ 9934. 완전 이진 트리](https://www.acmicpc.net/problem/9934)
+> - [BOJ 3184. 양](https://www.acmicpc.net/problem/3184)
+> - [BOJ 16198. 에너지 모으기](https://www.acmicpc.net/problem/16198)
+> - [BOJ 21937. 작업](https://www.acmicpc.net/problem/21937)
+> - [BOJ 27737. 버섯 농장](https://www.acmicpc.net/problem/27737)
+
 </details>
 
 
@@ -198,7 +208,7 @@
 > - [BOJ 2943. 토끼](https://www.acmicpc.net/problem/2943)
 > 
 > 0228 금요일
-> - 관통PJT
+> - 관통 PJT
 </details>
 
 <br>
@@ -221,3 +231,24 @@
 > 
 > 0307 금요일
 > - [BOJ 28353. 고양이 카페](https://www.acmicpc.net/problem/28353)
+
+
+<br>
+
+>**WEEK02**
+> 0310 월요일
+> - 스터디 없음
+> 
+> 0311 화요일
+> - [BOJ 28066. 타노스는 요세푸스가 밉다](https://www.acmicpc.net/problem/28066)
+> 
+> 0312 수요일
+> - [BOJ 2841. 외계인의 기타 연주](https://www.acmicpc.net/problem/2841)
+> 
+> 0313 목요일
+> - [BOJ 16236. 아기 상어](https://www.acmicpc.net/problem/16236)
+>
+> 0314 금요일
+> - 관통 PJT
+
+</details>
