@@ -6,6 +6,10 @@ import java.io.InputStreamReader;
 import java.util.HashMap;
 
 public class BOJ1991_트리순회 {
+    /**
+     * 트리 순회
+     * <a href="https://www.acmicpc.net/problem/1991">...</a>
+     */
 
     static HashMap<Character, char[]> hashmap = new HashMap<>();
     static StringBuilder sb = new StringBuilder();
