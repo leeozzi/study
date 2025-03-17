@@ -48,3 +48,48 @@ Servlet Container -> new 로 Servlet 인스턴스 만들지 않아도 대신 관
 # Front Controller
 - 기존에는 매핑 주소마다 servlet이 존재했기 때문에 많은 servlet 필요  
     -> 웹에서 발생하는 모든 요청에 대해 호출되는 공통 Servlet 만들어서 처리하게 함
+
+---
+# 실습
+## MainServlet
+```
+package com.ssafy.ws.step2.servlet;
+
+import java.io.IOException;
+
+import com.ssafy.ws.step2.dto.Movie;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+// 이 서블릿이 호출되기 위해서는 url 상에 http://server_ip:port/context_name/main 이 필요하다.
+
+@WebServlet("/lab")
+public class MainServlet extends HttpServlet{
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String action = req.getParameter("action");
+		
+		if("regist".equals(action)) {
+			String title = req.getParameter("title");
+			String director = req.getParameter("director");
+			String genre = req.getParameter("genre");
+			int runningTime = Integer.parseInt(req.getParameter("runningTime"));
+			
+			// Movie 객체 생성
+			Movie movie = new Movie(runningTime, title, director, genre, runningTime);
+			
+			// 브라우저에 출력
+			resp.setContentType("text/html; charset=UTF-8");
+			resp.getWriter().println("<h1>영화 정보</h1>");
+			resp.getWriter().println("<p>Movie [영화ID = " + movie.getId() + ", 영화 제목 = " + movie.getTitle() + ", 감독 = " + movie.getDirector() + ", 장르 = " + movie.getGenre() + ", 상영시간 = " + movie.getRunningTime() + "]");
+		}
+	}
+}
+
+```
