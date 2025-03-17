@@ -251,4 +251,23 @@
 > 0314 금요일
 > - 관통 PJT
 
+<br>
+
+**WEEK03**
+> 0317 월요일
+> - 과목평가
+>
+> 0318 화요일
+> - [BOJ 12907. 동물원](https://www.acmicpc.net/problem/12907)
+>
+> 0319 수요일
+> - [BOJ 1669. 멍멍이 쓰다듬기](https://www.acmicpc.net/problem/1669)
+>
+> 0320 목요일
+> - [BOJ 1686. 복날](https://www.acmicpc.net/problem/1686)
+>
+> 0321 금요일
+> - 스터디 없음
+
+
 </details>
