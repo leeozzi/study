@@ -5,6 +5,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
+/**
+ * 특정한 최단 경로
+ * https://www.acmicpc.net/problem/1504
+ */
+
 public class BOJ1504_특정한최단경로 {
 
     static class Edge {
