@@ -60,8 +60,6 @@ public class BOJ9663_NQueen_메모리초과 {
             }
         }
 
-        System.out.println("=========================");
-        System.out.println(x + ", " + y +"에서 " + status);
         for(int i = 0 ; i < N ; i++) {
             for(int j = 0 ; j < N ; j++) {
                 System.out.print(board[i][j] + " ");
