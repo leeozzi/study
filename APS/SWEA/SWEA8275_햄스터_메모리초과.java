@@ -1,4 +1,4 @@
-package workingon;
+package SWEA;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -38,11 +38,11 @@ public class SWEA8275_햄스터_메모리초과 {
             System.out.printf("#%d ", t);
             if (ans != null) {
                 for (int i = 0; i < ans.length; i++) {
-                    System.out.print(ans[i] + " ");
+                    sb.append(ans[i]).append(" ");
                 }
-                System.out.println();
+                sb.append("\n");
             } else {
-                System.out.println(-1);
+                sb.append(-1+"\n");
             }
             max = 0;
             ans = null;
@@ -66,7 +66,7 @@ public class SWEA8275_햄스터_메모리초과 {
                 }
             }
 
-            int totalsum = 0;
+            totalsum = 0;
             for (int i = 0; i < res.length; i++) {
                 totalsum += res[i];
             }
