@@ -119,8 +119,26 @@
 > - [BOJ 21937. 작업](https://www.acmicpc.net/problem/21937)
 > - [BOJ 27737. 버섯 농장](https://www.acmicpc.net/problem/27737)
 
+<br>
+
+> **0327 목요일**
+> - [BOJ 6603. 로또](https://www.acmicpc.net/problem/6603)
+> - [BOJ 15663. N과 M(9)](https://www.acmicpc.net/problem/15663)
+
 </details>
 
+<br>
+
+<details>
+<summary><b>📆 APRIL</b></summary>
+
+> **0403 목요일**
+> - [BOJ 1504. 특정한 최단 경로](https://www.acmicpc.net/problem/1504)
+> - [BOJ 14502. 연구소](https://www.acmicpc.net/problem/14502)
+> - [BOJ 1303. 전쟁-전투](https://www.acmicpc.net/problem/1303)
+> - [BOJ 1522. 문자열 교환](https://www.acmicpc.net/problem/1522)
+
+</details>
 
 <br>
 
@@ -285,6 +303,29 @@
 > - [BOJ 18291. 비요뜨의 징검다리 건너기](https://www.acmicpc.net/problem/18291)
 > 
 > 0328 금요일
+> - 스터디 없음
+
+</details>
+
+<br>
+
+<details>
+<summary><b>📆 APRIL</b></summary>
+
+> **WEEK01**  
+> 0331 월요일
+> - 과목평가 & 월말평가
+>
+> 0401 화요일
+> - [BOJ 16724. 피리 부는 사나이](https://www.acmicpc.net/problem/16724)
+>
+> 0305 수요일
+> - [BOJ 2887. 행성 터널](https://www.acmicpc.net/problem/2887)
+>
+> 0306 목요일
+> - [BOJ 1238. 파티](https://www.acmicpc.net/problem/1238)
+>
+> 0307 금요일
 > - 스터디 없음
 
 </details>
