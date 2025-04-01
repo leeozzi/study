@@ -2,6 +2,10 @@ package groupstudy.algorithm_study;
 
 import java.util.*;
 
+/**
+ * <a href="https://www.acmicpc.net/problem/1012">...</a>
+ */
+
 public class BOJ1012_유기농배추 {
 
     static int[][] visit;
