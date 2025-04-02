@@ -21,7 +21,7 @@ public class HelloController {
         return "hello-template";
     }
 
-    @GetMapping("hello-string")
+    @GetMapping("hello-spring")
     @ResponseBody   // http에서 header와 body가 있는데 body에 데이터를 직접 넣어주겠다
     public String helloString(@RequestParam("name") String name) {
         return "hello " + name;  // hello eonji
