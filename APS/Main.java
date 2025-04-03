@@ -2,19 +2,24 @@ import java.util.*;
 import java.io.*;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        int n = sc.nextInt();
-        int[][] map = new int[n][n];
+        String input = br.readLine();
+        while(!input.equals("0 0")){
+            String[] str = input.split(" ");
+            int a = Integer.parseInt(str[0]);
+            int b = Integer.parseInt(str[1]);
 
-        System.out.println(sc.nextInt());
-        for(int i =0 ;i < n ;i++) {
-            for(int j = 0 ;j < n ; j++) {
-                System.out.print(map[i][j]+ " ");
+            if(a > b) {
+                System.out.println("Yes");
+            } else {
+                System.out.println("No");
             }
-            System.out.println();
+
+            input = br.readLine();
         }
+
     }
 
 
