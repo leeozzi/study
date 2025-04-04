@@ -139,6 +139,15 @@
 > - [BOJ 1303. 전쟁-전투](https://www.acmicpc.net/problem/1303)
 > - [BOJ 1522. 문자열 교환](https://www.acmicpc.net/problem/1522)
 
+<br>
+
+>0411 목요일**
+> - [BOJ12101. 1,2,3 더하기 2](https://www.acmicpc.net/problem/12101)
+> - [BOJ1189. 컴백홈](https://www.acmicpc.net/problem/1189)
+> - [BOJ25511. 값이 k인 트리노드의 깊이](https://www.acmicpc.net/problem/25511)
+> - [BOJ14650. 걷다 보니 신천역 삼(Small)](https://www.acmicpc.net/problem/14650)
+> - [BOJ4386. 별자리 만들기](https://www.acmicpc.net/problem/4386)
+> - [BOJ13549. 숨바꼭질 3](https://www.acmicpc.net/problem/13549)
 </details>
 
 <br>
@@ -329,4 +338,21 @@
 > 0307 금요일
 > - 스터디 없음
 
+<br>
+
+> **WEEK02**
+> 0407 월요일
+> - 스터디 없음
+> 
+> 0408 화요일
+> - [BOJ 2533. 사회망 서비스(SNS)](https://www.acmicpc.net/problem/2533)
+> 
+> 0409 수요일
+> - [BOJ 13460. 구슬 탈출 2](https://www.acmicpc.net/problem/2533)
+> 
+> 0410 목요일
+> - [BOJ 2098. 외판원 순회](https://www.acmicpc.net/problem/2098)
+> 
+> 0411 금요일
+> - 스터디 없음
 </details>
