@@ -2,9 +2,7 @@ package inflearn.hello_spring.service;
 
 import inflearn.hello_spring.domain.Member;
 import inflearn.hello_spring.repository.MemberRepository;
-import inflearn.hello_spring.repository.MemoryMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -28,10 +26,17 @@ public class MemberService {
 //            throw new IllegalStateException("이미 존재하는 회원입니다");
 //        }); // 어차피 Optional로 반환되기 때문에 바로 ifPresent 쓸 수 있음
 
-        validateDuplicateMember(member);
-
-        memberRepository.save(member);
-        return member.getId();
+//        long start = System.currentTimeMillis();
+//
+//        try {
+            validateDuplicateMember(member);
+            memberRepository.save(member);
+            return member.getId();
+//        } finally {
+//            long finish = System.currentTimeMillis();
+//            long timeMs = finish - start;
+//            System.out.println("join = " + timeMs + "ms");
+//        }
     }
 
     private void validateDuplicateMember(Member member) {
@@ -40,10 +45,17 @@ public class MemberService {
                     throw new IllegalStateException("이미 존재하는 회원입니다.");
                 });
     }
-    
+
     // 전체 회원 조회
     public List<Member> findMembers() {
-        return memberRepository.findAll();
+//        long start = System.currentTimeMillis();
+//        try {
+            return memberRepository.findAll();
+//        } finally {
+//            long finish = System.currentTimeMillis();
+//            long timeMs = finish - start;
+//            System.out.println("findMembers = " + timeMs + "ms");
+//        }
     }
 
     public Optional<Member> findOne(Long memberId) {

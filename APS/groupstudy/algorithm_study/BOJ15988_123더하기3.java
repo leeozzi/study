@@ -1,4 +1,4 @@
-package BOJ;
+package groupstudy.algorithm_study;
 
 import java.util.Scanner;
 
