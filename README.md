@@ -3,6 +3,7 @@
 - [2025년 2월 TIL](https://github.com/leeozzi/study/blob/master/TIL/TIL_2025_02.md)
 - [2025년 3월 TIL](https://github.com/leeozzi/study/blob/master/TIL/TIL_2025_03.md)
 - [2025년 4월 TIL](https://github.com/leeozzi/study/blob/master/TIL/TIL_2025_04.md)
+- [2025년 5월 TIL](https://github.com/leeozzi/study/blob/master/TIL/TIL_2025_05.md)
 
 <br>
 
@@ -185,6 +186,17 @@
 <br>
 
 > **0424 목요일**
+>
+> - 스터디 없음
+
+</details>
+
+<br>
+
+<details>
+<summary><b>📆 MAY</b></summary>
+
+> **0501 목요일**
 >
 > - 스터디 없음
 
